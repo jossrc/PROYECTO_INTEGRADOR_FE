@@ -7,6 +7,7 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es-PE';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
+import { PagesModule } from './pages/pages.module';
 
 registerLocaleData(localeEs);
 @NgModule({
@@ -17,6 +18,7 @@ registerLocaleData(localeEs);
     SharedModule,
     RouterModule,
     AppRoutingModule,
+    PagesModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-PE' }],
   bootstrap: [AppComponent],
