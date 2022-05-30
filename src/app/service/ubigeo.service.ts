@@ -13,7 +13,7 @@ export class UbigeoService {
 
   constructor(private http: HttpClient) { }
 
-  listarDepartamento(): Observable<string[]> {
+  listarDepartamentos(): Observable<string[]> {
     return this.http.get<string[]>(baseUrlUtil + "/departamento");
   }
 
