@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders} from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 
-const API_ROUTE = environment.API_ENDPOINT + "/empleado";
-const token = environment.TOKEN_TEST;
+const API_ROUTE = environment.API_ENDPOINT + "/usuarios/empleado";
+const token = environment.TOKEN_TEST
 
 @Injectable({
   providedIn: 'root'

@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PagesModule } from './pages/pages.module';
 import { HttpClientModule } from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
+import { DialogService } from "primeng/dynamicdialog";
 
 registerLocaleData(localeEs);
 @NgModule({
@@ -24,7 +25,7 @@ registerLocaleData(localeEs);
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'es-PE' }],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-PE' }, DialogService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -26,6 +26,7 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 import { TagModule } from 'primeng/tag';
+import {InputSwitchModule} from "primeng/inputswitch";
 @NgModule({
   exports: [
     BadgeModule,
@@ -51,6 +52,7 @@ import { TagModule } from 'primeng/tag';
     MessageModule,
     ToastModule,
     TagModule,
+    InputSwitchModule
   ],
   declarations: [],
   imports: [CommonModule],

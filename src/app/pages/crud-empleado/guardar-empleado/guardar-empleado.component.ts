@@ -9,6 +9,13 @@ import {EmpleadoService} from "../../../service/empleado.service";
 })
 export class GuardarEmpleadoComponent implements OnInit {
 
+  // TODO: Arreglo de objetos de este tipo {name: 'New York', code: 'NY'},
+  listaDepartamentos = [];
+  listaProvincias = [];
+  listaDistritos = [];
+  listaRoles = [];
+  listaLocales = [];
+
   constructor( private empleadoService:EmpleadoService, public ref: DynamicDialogRef, public config: DynamicDialogConfig) { }
 
   ngOnInit(): void {
