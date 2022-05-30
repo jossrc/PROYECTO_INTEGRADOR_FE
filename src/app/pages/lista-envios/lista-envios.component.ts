@@ -14,9 +14,11 @@ export class ListaEnviosComponent implements OnInit {
 
   envio: Envio = {
     idEnv:0,
-    descripcion:"",
-    fechaSolicitud:new Date(),
-    estado:""
+    adjunto:"",
+    fechaInicio:new Date(),
+    fechaEntrega:new Date(),
+    fechaCreacion:new Date(),
+    estado:0
   };
   
 

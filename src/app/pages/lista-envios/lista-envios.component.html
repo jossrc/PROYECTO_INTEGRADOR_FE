@@ -14,7 +14,12 @@
         <tr>
             <th style="width: 10%">Codigo</th>
             <th style="width: 10%">Descripcion</th>
-            <th style="width: 10%">Fecha de solicitud</th>
+            <th style="width: 10%">Fecha de inicio</th>
+            <th style="width: 10%">Fecha de entrega</th>
+            <th style="width: 10%">Fecha de creacion</th>
+            <th style="width: 10%">Cotizacion</th>
+            <th style="width: 10%">Usuario</th>
+            <th style="width: 10%">Vehiculo</th>
             <th style="width: 10%">Estado</th>
         </tr>
     </ng-template>
@@ -23,8 +28,10 @@
         
         <tr *ngFor="let aux of envios">
             <td>{{aux.idEnv}}</td>
-            <td>{{aux.descripcion}}</td>
-            <td>{{aux.fechaSolicitud}}</td>
+            <td>{{aux.adjunto}}</td>
+            <td>{{aux.fechaInicio}}</td>
+            <td>{{aux.fechaEntrega}}</td>
+            <td>{{aux.fechaCreacion}}</td>
             <td>{{aux.estado}}</td>
         </tr>
         

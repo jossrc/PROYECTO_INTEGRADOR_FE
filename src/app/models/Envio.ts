@@ -1,8 +1,10 @@
 export interface Envio {
 
     idEnv?:number,
-    descripcion?:String,
-    fechaSolicitud?:Date,
-    estado?:String
+    adjunto?:String,
+    fechaInicio?:Date,
+    fechaEntrega?:Date,
+    fechaCreacion?:Date,
+    estado?:number
 
 }
