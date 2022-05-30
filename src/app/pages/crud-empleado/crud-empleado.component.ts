@@ -49,7 +49,10 @@ export class CrudEmpleadoComponent implements OnInit {
 
     this.ref.onClose.subscribe( (data: any) => {
       console.log('Hay data? ', data)
-      this.messageService.add({severity:'info', summary: 'Producto registrado', detail: 'Producto'});
+      if (data) {
+        this.obtenerEmpleados();
+      }
+      //this.messageService.add({severity:'info', summary: 'Producto registrado', detail: 'Producto'});
     });
 
   }

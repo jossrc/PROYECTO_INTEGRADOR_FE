@@ -1,63 +1,76 @@
-<div class="grid formgrid p-fluid">
-  <div class="field mb-4 col-12 md:col-6">
-    <label for="nombre" class="font-medium text-900">Nombre</label>
-    <input id="nombre" type="text" pInputText>
-  </div>
-  <div class="field mb-4 col-12 md:col-6">
-    <label for="apellido" class="font-medium text-900">Apellido</label>
-    <input id="apellido" type="text" pInputText>
-  </div>
-  <div class="field mb-4 col-12">
-    <label for="dni" class="font-medium text-900">DNI</label>
-    <input id="dni" type="text" pInputText>
-  </div>
-  <div class="field mb-4 col-12">
-    <label for="direccion" class="font-medium text-900">Dirección</label>
-    <input id="direccion" type="text" pInputText>
-  </div>
-  <div class="surface-border border-top-1 opacity-50 mb-3 col-12"></div>
-  <div class="field mb-4 col-12 md:col-6">
-    <label class="font-medium text-900">Local</label>
-    <p-dropdown [options]="listaLocales"  placeholder="Seleccione Local" optionLabel="name" [showClear]="true"></p-dropdown>
-  </div>
+<form [formGroup]="formEmpleado" autocomplete="false" (ngSubmit)="guardarEmpleado()" >
+  <div class="grid formgrid p-fluid">
+    <div class="field mb-4 col-12 md:col-6">
+      <label for="nombre" class="font-medium text-900">Nombre</label>
+      <input id="nombre" type="text" formControlName="nombre" [class]=" isValidField('nombre') ? 'ng-invalid ng-dirty' : '' " pInputText>
+      <small *ngIf="isValidField('nombre')"  class="p-error block">No puede estar vacío</small>
+    </div>
+    <div class="field mb-4 col-12 md:col-6">
+      <label for="apellido" class="font-medium text-900">Apellido</label>
+      <input id="apellido" type="text" formControlName="apellido" [class]=" isValidField('apellido') ? 'ng-invalid ng-dirty' : '' " pInputText>
+      <small *ngIf="isValidField('apellido')" class="p-error block">No puede estar vacío</small>
+    </div>
+    <div class="field mb-4 col-12">
+      <label for="dni" class="font-medium text-900">DNI</label>
+      <input id="dni" type="text"  formControlName="dni" [class]=" isValidField('dni') ? 'ng-invalid ng-dirty' : '' " pInputText>
+      <small *ngIf="isValidField('dni')" class="p-error block">No puede estar vacío</small>
+    </div>
+    <div class="field mb-4 col-12">
+      <label for="direccion" class="font-medium text-900">Dirección</label>
+      <input id="direccion" formControlName="direccion" type="text" [class]=" isValidField('direccion') ? 'ng-invalid ng-dirty' : '' " pInputText>
+      <small *ngIf="isValidField('direccion')" class="p-error block">No puede estar vacío</small>
+    </div>
+    <div class="surface-border border-top-1 opacity-50 mb-3 col-12"></div>
+    <div class="field mb-4 col-12 md:col-6">
+      <label class="font-medium text-900">Local</label>
+      <p-dropdown [options]="listaLocales" formControlName="local" [class]=" isValidField('local') ? 'ng-invalid ng-dirty' : '' " placeholder="Seleccione Local" optionLabel="name" [showClear]="true"></p-dropdown>
+      <small *ngIf="isValidField('local')" class="p-error block">No puede estar vacío</small>
+    </div>
 
-  <div class="field mb-4 col-12 md:col-6">
-    <label class="font-medium text-900">Rol</label>
-    <p-dropdown [options]="listaRoles"  placeholder="Seleccione Rol" optionLabel="name" [showClear]="true"></p-dropdown>
+    <div class="field mb-4 col-12 md:col-6">
+      <label class="font-medium text-900">Rol</label>
+      <p-dropdown [options]="listaRoles" formControlName="rol" [class]=" isValidField('rol') ? 'ng-invalid ng-dirty' : '' " placeholder="Seleccione Rol" optionLabel="name" [showClear]="true"></p-dropdown>
+      <small *ngIf="isValidField('rol')" class="p-error block">No puede estar vacío</small>
+    </div>
+
+    <div class="surface-border border-top-1 opacity-50 mb-3 col-12"></div>
+
+    <div class="field mb-4 col-12 md:col-4">
+      <label class="font-medium text-900">Departamento</label>
+      <p-dropdown [options]="listaDepartamentos" formControlName="departamento" [class]=" isValidField('departamento') ? 'ng-invalid ng-dirty' : '' "  placeholder="Seleccione departamento" optionLabel="name" [showClear]="true"></p-dropdown>
+      <small *ngIf="isValidField('departamento')" class="p-error block">No puede estar vacío</small>
+    </div>
+
+    <div class="field mb-4 col-12 md:col-4">
+      <label class="font-medium text-900">Provincia</label>
+      <p-dropdown [options]="listaProvincias" formControlName="provincia" [class]=" isValidField('provincia') ? 'ng-invalid ng-dirty' : '' " placeholder="Seleccione provincia" optionLabel="name" [showClear]="true"></p-dropdown>
+      <small *ngIf="isValidField('provincia')" class="p-error block">No puede estar vacío</small>
+    </div>
+
+    <div class="field mb-4 col-12 md:col-4">
+      <label class="font-medium text-900">Distrito</label>
+      <p-dropdown [options]="listaDistritos"  formControlName="distrito" [class]=" isValidField('distrito') ? 'ng-invalid ng-dirty' : '' " placeholder="Seleccione distrito" optionLabel="name" [showClear]="true"></p-dropdown>
+      <small *ngIf="isValidField('distrito')" class="p-error block">No puede estar vacío</small>
+    </div>
+
+    <div class="surface-border border-top-1 opacity-50 mb-3 col-12"></div>
+
+    <div class="field mb-4 col-12 md:col-6">
+      <label for="email" class="font-medium text-900">Email</label>
+      <input id="email" type="text" formControlName="email" [class]=" isValidField('email') ? 'ng-invalid ng-dirty' : '' " pInputText>
+      <small *ngIf="isValidField('email')" class="p-error block">No puede estar vacío</small>
+    </div>
+
+    <div class="field mb-4 col-12 md:col-6">
+      <label for="password" class="font-medium text-900">Contraseña</label>
+      <p-password id="password" formControlName="password" [class]=" isValidField('password') ? 'ng-invalid ng-dirty' : '' " [feedback]="false"></p-password>
+      <small *ngIf="isValidField('password')" class="p-error block">No puede estar vacío</small>
+    </div>
+
+    <div class="surface-border border-top-1 opacity-50 mb-3 col-12"></div>
+
+    <div class="col-12">
+      <button pButton pRipple label="Registrar Empleado" class="w-auto mt-3"></button>
+    </div>
   </div>
-
-  <div class="surface-border border-top-1 opacity-50 mb-3 col-12"></div>
-
-  <div class="field mb-4 col-12 md:col-4">
-    <label class="font-medium text-900">Departamento</label>
-    <p-dropdown [options]="listaDepartamentos"  placeholder="Seleccione departamento" optionLabel="name" [showClear]="true"></p-dropdown>
-  </div>
-
-  <div class="field mb-4 col-12 md:col-4">
-    <label class="font-medium text-900">Provincia</label>
-    <p-dropdown [options]="listaProvincias"  placeholder="Seleccione provincia" optionLabel="name" [showClear]="true"></p-dropdown>
-  </div>
-
-  <div class="field mb-4 col-12 md:col-4">
-    <label class="font-medium text-900">Distrito</label>
-    <p-dropdown [options]="listaDistritos"  placeholder="Seleccione distrito" optionLabel="name" [showClear]="true"></p-dropdown>
-  </div>
-
-  <div class="surface-border border-top-1 opacity-50 mb-3 col-12"></div>
-
-  <div class="field mb-4 col-12 md:col-6">
-    <label for="email" class="font-medium text-900">Email</label>
-    <input id="email" type="text" pInputText>
-  </div>
-
-  <div class="field mb-4 col-12 md:col-6">
-    <label for="password" class="font-medium text-900">Contraseña</label>
-    <p-password id="password" [feedback]="false"></p-password>
-  </div>
-
-  <div class="surface-border border-top-1 opacity-50 mb-3 col-12"></div>
-
-  <div class="col-12">
-    <button pButton pRipple label="Registrar Empleado" class="w-auto mt-3"></button>
-  </div>
-</div>
+</form>
