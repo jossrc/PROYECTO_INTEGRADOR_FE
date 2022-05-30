@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
+import { HttpClient, HttpHeaders} from "@angular/common/http";
+import { Observable } from "rxjs";
+import { environment } from "../../environments/environment";
 
-const API_ROUTE = "http://localhost:8090/api/usuarios/empleado"
-const token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6Ilt7XCJyb2xlXCI6XCJST0xFX0FETUlOXCJ9XSIsInN1YiI6Impvc2UxMjM0NUBnbWFpbC5jb20iLCJpYXQiOjE2NTM4NzgyNjcsImV4cCI6MTY1Mzg5MjI2N30.Y482I38LuM6kzyvXCNvCLGwYoc7Mv8LXX64oYFW7Vt0";
+const API_ROUTE = environment.API_ENDPOINT + "/empleado";
+const token = environment.TOKEN_TEST;
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,10 @@ export class EmpleadoService {
 
   listarEmpleados(): Observable<any> {
     return this.http.get(API_ROUTE + "/listar", { headers: this.headers } )
+  }
+
+  registrarEmpleado(empleado: any): Observable<any> {
+    return this.http.post(API_ROUTE + "/registrar", empleado, { headers: this.headers } )
   }
 
 }

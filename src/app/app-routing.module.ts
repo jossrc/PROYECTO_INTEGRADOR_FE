@@ -8,6 +8,9 @@ import { ListaUsuariosComponent } from "./pages/lista-usuarios/lista-usuarios.co
 const routes: Routes = [
   { path: 'admin/home', component: AdminHomeComponent },
   { path: 'admin/empleados', component: CrudEmpleadoComponent },
+  { path: 'admin/categoria-paquete', component: ListaUsuariosComponent },
+  { path: 'admin/vehiculo', component: ListaUsuariosComponent },
+  { path: 'admin/local', component: ListaUsuariosComponent },
   { path: 'admin/clientes', component: ListaUsuariosComponent },
   { path: '**', component: AdminHomeComponent }
 ];

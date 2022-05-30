@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { PagesModule } from './pages/pages.module';
 import { HttpClientModule } from "@angular/common/http";
+import {ReactiveFormsModule} from "@angular/forms";
 
 registerLocaleData(localeEs);
 @NgModule({
@@ -20,7 +21,8 @@ registerLocaleData(localeEs);
     RouterModule,
     AppRoutingModule,
     PagesModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-PE' }],
   bootstrap: [AppComponent],
