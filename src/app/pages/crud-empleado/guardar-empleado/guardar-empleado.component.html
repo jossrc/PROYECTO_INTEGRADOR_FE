@@ -1,5 +1,3 @@
-<br>
-
 <div class="grid formgrid p-fluid">
   <div class="field mb-4 col-12 md:col-6">
     <label for="nombre" class="font-medium text-900">Nombre</label>
@@ -19,41 +17,42 @@
   </div>
   <div class="surface-border border-top-1 opacity-50 mb-3 col-12"></div>
   <div class="field mb-4 col-12 md:col-6">
-    <label for="email" class="font-medium text-900">Email</label>
-    <input id="email" type="text" pInputText>
+    <label class="font-medium text-900">Local</label>
+    <p-dropdown [options]="listaLocales"  placeholder="Seleccione Local" optionLabel="name" [showClear]="true"></p-dropdown>
   </div>
+
   <div class="field mb-4 col-12 md:col-6">
-    <label for="password" class="font-medium text-900">Contraseña</label>
-    <p-password id="password" [feedback]="false"></p-password>
+    <label class="font-medium text-900">Rol</label>
+    <p-dropdown [options]="listaRoles"  placeholder="Seleccione Rol" optionLabel="name" [showClear]="true"></p-dropdown>
   </div>
 
   <div class="surface-border border-top-1 opacity-50 mb-3 col-12"></div>
 
   <div class="field mb-4 col-12 md:col-4">
     <label class="font-medium text-900">Departamento</label>
-    <p-dropdown [options]="listaDepartamentos"  placeholder="Seleccione departamento" optionLabel="departamento" [showClear]="true"></p-dropdown>
+    <p-dropdown [options]="listaDepartamentos"  placeholder="Seleccione departamento" optionLabel="name" [showClear]="true"></p-dropdown>
   </div>
 
   <div class="field mb-4 col-12 md:col-4">
     <label class="font-medium text-900">Provincia</label>
-    <p-dropdown [options]="listaProvincias"  placeholder="Seleccione provincia" optionLabel="provincia" [showClear]="true"></p-dropdown>
+    <p-dropdown [options]="listaProvincias"  placeholder="Seleccione provincia" optionLabel="name" [showClear]="true"></p-dropdown>
   </div>
 
   <div class="field mb-4 col-12 md:col-4">
     <label class="font-medium text-900">Distrito</label>
-    <p-dropdown [options]="listaDistritos"  placeholder="Seleccione distrito" optionLabel="distrito" [showClear]="true"></p-dropdown>
+    <p-dropdown [options]="listaDistritos"  placeholder="Seleccione distrito" optionLabel="name" [showClear]="true"></p-dropdown>
   </div>
 
   <div class="surface-border border-top-1 opacity-50 mb-3 col-12"></div>
 
   <div class="field mb-4 col-12 md:col-6">
-    <label class="font-medium text-900">Local</label>
-    <p-dropdown [options]="listaLocales"  placeholder="Seleccione Local" optionLabel="local" [showClear]="true"></p-dropdown>
+    <label for="email" class="font-medium text-900">Email</label>
+    <input id="email" type="text" pInputText>
   </div>
 
   <div class="field mb-4 col-12 md:col-6">
-    <label class="font-medium text-900">Rol</label>
-    <p-dropdown [options]="listaRoles"  placeholder="Seleccione Rol" optionLabel="local" [showClear]="true"></p-dropdown>
+    <label for="password" class="font-medium text-900">Contraseña</label>
+    <p-password id="password" [feedback]="false"></p-password>
   </div>
 
   <div class="surface-border border-top-1 opacity-50 mb-3 col-12"></div>
