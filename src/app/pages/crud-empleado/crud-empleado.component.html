@@ -1,0 +1,57 @@
+<p-toast></p-toast>
+<div class="p-5">
+  <div class="col-12">
+    <div class="surface-card shadow-2 border-round p-4">
+      <div class="card">
+        <p-toolbar styleClass="mb-4">
+          <ng-template pTemplate="left">
+            <button pButton pRipple label="Registrar" icon="pi pi-plus" class="p-button-success mr-2"></button>
+          </ng-template>
+        </p-toolbar>
+
+        <p-table [value]="listaEmpleados" [rows]="10" [paginator]="true"  responsiveLayout="scroll"
+                 [(selection)]="selectEmpleados" [rowHover]="true" dataKey="id"
+                 currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} registros" [showCurrentPageReport]="true">
+          <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+              <h5 class="m-0">Mantenimiento de Empleados</h5>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 3rem">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+              </th>
+              <th pSortableColumn="nombre">Nombre <p-sortIcon field="nombre"></p-sortIcon></th>
+              <th pSortableColumn="apellido">Apellido <p-sortIcon field="apellido"></p-sortIcon></th>
+              <th pSortableColumn="dni">DNI <p-sortIcon field="dni"></p-sortIcon></th>
+              <th pSortableColumn="email">Correo electrónico <p-sortIcon field="email"></p-sortIcon></th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-empleado>
+            <tr>
+              <td>
+                <p-tableCheckbox [value]="empleado"></p-tableCheckbox>
+              </td>
+              <td>{{empleado?.nombre}}</td>
+              <td>{{empleado?.apellido}}</td>
+              <td>{{empleado?.dni}}</td>
+              <td>{{empleado?.email}}</td>
+              <td>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between" style="font-size: .8rem">
+              Hay un total de {{listaEmpleados ? listaEmpleados.length : 0 }} empleados.
+            </div>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>
+
