@@ -1,8 +1,8 @@
-export interface Ubigeo {
+export class Ubigeo {
 
-      idUbigeo?:number,
-      departamento?:string,
-      provincia?:string,
-      distrito?:string
+    idUbigeo?:number;
+    departamento?:string;
+    provincia?:string;
+    distrito?:string
 
 }

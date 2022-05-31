@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from "primeng/api";
 import {EmpleadoService} from "../../service/empleado.service";
+import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
+import {GuardarEmpleadoComponent} from "./guardar-empleado/guardar-empleado.component";
 
 @Component({
   selector: 'app-crud-empleado',
@@ -13,7 +15,13 @@ export class CrudEmpleadoComponent implements OnInit {
   selectEmpleados = [];
   listaEmpleados = [];
 
-  constructor(private empleadoService:EmpleadoService ) { }
+  ref!: DynamicDialogRef;
+
+  constructor(
+    private empleadoService:EmpleadoService,
+    public dialogService: DialogService,
+    public messageService: MessageService
+  ) { }
 
   ngOnInit(): void {
     this.obtenerEmpleados()
@@ -24,6 +32,29 @@ export class CrudEmpleadoComponent implements OnInit {
       this.listaEmpleados = data.datos;
       console.log(data);
     });
+  }
+
+  public mostrarModalEmpleadoRegistrar() {
+    this.ref = this.dialogService.open( GuardarEmpleadoComponent, {
+      header: "Registrar un empleado",
+      width: '50%',
+      contentStyle: {"max-height": "600px", "overflow": "auto"},
+      baseZIndex: 10000,
+      dismissableMask: true,
+      style: {
+        'align-self': 'flex-start',
+        'margin-top': '4rem'
+      }
+    })
+
+    this.ref.onClose.subscribe( (data: any) => {
+      console.log('Hay data? ', data)
+      if (data) {
+        this.obtenerEmpleados();
+      }
+      //this.messageService.add({severity:'info', summary: 'Producto registrado', detail: 'Producto'});
+    });
+
   }
 
 
