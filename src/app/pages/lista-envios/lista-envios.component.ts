@@ -13,11 +13,23 @@ export class ListaEnviosComponent implements OnInit {
   envios: Envio[] = [];
 
   envio: Envio = {
-    idEnv:0,
+    idEnvio:0,
     adjunto:"",
     fechaInicio:new Date(),
     fechaEntrega:new Date(),
     fechaCreacion:new Date(),
+    cotizacion:{
+         idCotizacion:0,
+         descripcion:"-1"
+    },
+    usuario:{
+         idUsuario:0,
+         nombre:"-1",
+    },
+    vehiculo:{
+         idVehiculo:0,
+         placa:"-1"
+    },
     estado:0
   };
   

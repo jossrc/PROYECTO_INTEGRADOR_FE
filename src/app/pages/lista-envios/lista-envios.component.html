@@ -8,15 +8,12 @@
 </div>
 
 <div class="row">
-<p-table responsiveLayout="scroll">
-    
+    <p-table responsiveLayout="scroll">
+
     <ng-template pTemplate="header">
         <tr>
             <th style="width: 10%">Codigo</th>
             <th style="width: 10%">Descripcion</th>
-            <th style="width: 10%">Fecha de inicio</th>
-            <th style="width: 10%">Fecha de entrega</th>
-            <th style="width: 10%">Fecha de creacion</th>
             <th style="width: 10%">Cotizacion</th>
             <th style="width: 10%">Usuario</th>
             <th style="width: 10%">Vehiculo</th>
@@ -27,11 +24,11 @@
     <ng-template pTemplate="body" let-product>
         
         <tr *ngFor="let aux of envios">
-            <td>{{aux.idEnv}}</td>
+            <td>{{aux.idEnvio}}</td>
             <td>{{aux.adjunto}}</td>
-            <td>{{aux.fechaInicio}}</td>
-            <td>{{aux.fechaEntrega}}</td>
-            <td>{{aux.fechaCreacion}}</td>
+            <td>{{aux.cotizacion!.descripcion}}</td>
+            <td>{{aux.usuario!.nombre}}</td>
+            <td>{{aux.vehiculo!.placa}}</td>
             <td>{{aux.estado}}</td>
         </tr>
         

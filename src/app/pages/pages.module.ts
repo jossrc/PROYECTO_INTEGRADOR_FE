@@ -15,7 +15,7 @@ import { CrudCategoriaPaqueteComponent } from './crud-categoria-paquete/crud-cat
 import { CrudVehiculoComponent } from './crud-vehiculo/crud-vehiculo.component';
 
 @NgModule({
-  declarations: [AdminHomeComponent, ListaUsuariosComponent, CrudEmpleadoComponent, GuardarEmpleadoComponent, CrudLocalComponent, CrudCategoriaPaqueteComponent, CrudVehiculoComponent],
+  declarations: [AdminHomeComponent, ListaUsuariosComponent, CrudEmpleadoComponent, GuardarEmpleadoComponent, CrudLocalComponent, CrudCategoriaPaqueteComponent, CrudVehiculoComponent, ListaEnviosComponent],
   exports: [AdminHomeComponent],
   imports: [CommonModule, PrimeNgModule, ToolbarModule],
 
