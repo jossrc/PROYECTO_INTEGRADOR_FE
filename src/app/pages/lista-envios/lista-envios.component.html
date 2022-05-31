@@ -8,7 +8,7 @@
 </div>
 
 <div class="row">
-    <p-table responsiveLayout="scroll">
+    <p-table [value]="envios" responsiveLayout="scroll">
 
     <ng-template pTemplate="header">
         <tr>
@@ -21,9 +21,9 @@
         </tr>
     </ng-template>
     
-    <ng-template pTemplate="body" let-product>
+    <ng-template pTemplate="body" let-aux>
         
-        <tr *ngFor="let aux of envios">
+        <tr>
             <td>{{aux.idEnvio}}</td>
             <td>{{aux.adjunto}}</td>
             <td>{{aux.cotizacion!.descripcion}}</td>
