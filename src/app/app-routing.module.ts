@@ -7,6 +7,7 @@ import { ListaUsuariosComponent } from "./pages/lista-usuarios/lista-usuarios.co
 import { CrudCategoriaPaqueteComponent } from "./pages/crud-categoria-paquete/crud-categoria-paquete.component";
 import { CrudVehiculoComponent } from "./pages/crud-vehiculo/crud-vehiculo.component";
 import { CrudLocalComponent } from "./pages/crud-local/crud-local.component";
+import { ListaEnviosComponent } from './pages/lista-envios/lista-envios.component';
 
 const routes: Routes = [
   { path: 'admin/home', component: AdminHomeComponent },
@@ -15,7 +16,9 @@ const routes: Routes = [
   { path: 'admin/vehiculo', component: CrudVehiculoComponent },
   { path: 'admin/local', component: CrudLocalComponent },
   { path: 'admin/clientes', component: ListaUsuariosComponent },
+  { path: 'listEnvio', component: ListaEnviosComponent},
   { path: '**', component: AdminHomeComponent }
+
 ];
 
 @NgModule({
