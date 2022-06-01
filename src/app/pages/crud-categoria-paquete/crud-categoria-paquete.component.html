@@ -5,9 +5,11 @@
       <div class="card">
         <p-toolbar styleClass="mb-4">
           <ng-template pTemplate="left">
-            <button pButton pRipple label="Registrar" icon="pi pi-plus" class="p-button-success mr-2"></button>
+            <button (click)="mostrarModalCategoriaPaqueteRegistrar()" pButton pRipple label="Registrar" icon="pi pi-plus" class="p-button-success mr-2"></button>
           </ng-template>
         </p-toolbar>
+ 
+        <p-message></p-message>
 
         <p-table [value]="listaCategoriaPaquetes" [rows]="10" [paginator]="true"  responsiveLayout="scroll"
                  [(selection)]="selectCategoriaPaquetes" [rowHover]="true" dataKey="id"
@@ -37,7 +39,10 @@
               <td>{{categoriapaquetes?.idCategoria}}</td>
               <td>{{categoriapaquetes?.nombre}}</td>
               <td>{{categoriapaquetes?.descripcion}}</td>
-              <td>{{categoriapaquetes?.estado}}</td>
+              <td>
+                <p-tag *ngIf="categoriapaquetes.estado == 1" styleClass="mr-2" severity="success" value="Activo"></p-tag>
+                <p-tag *ngIf="categoriapaquetes.estado == 0" severity="danger" value="Inactivo"></p-tag>
+              </td>
               <td>
                 <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
                 <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>

@@ -21,4 +21,8 @@ export class CategoriaPaqueteService {
     return this.http.get(API_ROUTE + "/listar", { headers: this.headers } )
   }
 
+  registrarCategoriaPaquete(categoriaPaquete: any): Observable<any> {
+    return this.http.post(API_ROUTE + "/registrar", categoriaPaquete, { headers: this.headers } )
+  }
+
 }
