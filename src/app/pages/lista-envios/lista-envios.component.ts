@@ -25,6 +25,7 @@ export class ListaEnviosComponent implements OnInit {
     usuario:{
          idUsuario:0,
          nombre:"-1",
+         apellido:"-1",
     },
     vehiculo:{
          idVehiculo:0,
