@@ -1,0 +1,42 @@
+
+<div class="container">
+
+    <h1 style="text-align: center; font: 150% sans-serif;">Listado de envios</h1>
+
+<div>
+<button style="border-radius: 30px; margin-bottom: 50px; margin-left: 80%;" pButton (click)="consultar()" type="button" label="Listar" ></button>
+</div>
+
+<div class="row">
+<p-table responsiveLayout="scroll">
+    
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 10%">Codigo</th>
+            <th style="width: 10%">Descripcion</th>
+            <th style="width: 10%">Fecha de solicitud</th>
+            <th style="width: 10%">Estado</th>
+        </tr>
+    </ng-template>
+    
+    <ng-template pTemplate="body" let-product>
+        
+        <tr *ngFor="let aux of envios">
+            <td>{{aux.idEnv}}</td>
+            <td>{{aux.descripcion}}</td>
+            <td>{{aux.fechaSolicitud}}</td>
+            <td>{{aux.estado}}</td>
+        </tr>
+        
+    </ng-template>
+</p-table>
+</div>
+
+</div>
+
+
+
+
+
+
+
