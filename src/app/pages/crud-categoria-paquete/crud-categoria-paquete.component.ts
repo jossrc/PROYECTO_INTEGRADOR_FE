@@ -53,6 +53,33 @@ export class CrudCategoriaPaqueteComponent implements OnInit {
     this.ref.onClose.subscribe( (data: any) => {
       console.log('Hay data? ', data)
       if (data) {
+        this.messageService.add({severity:'info', detail: data.mensaje, summary: 'Categoria Paquete Registrado'});
+        this.obtenerCategoriaPaquete();
+      }
+    });
+
+  }
+
+  public mostrarModalCategoriaPaqueteActualizar(categoriaPaquete: any) {
+    this.ref = this.dialogService.open( GuardarCategoriaPaqueteComponent, {
+      header: "Actualizar una Categoria Paquete",
+      width: '50%',
+      contentStyle: {"max-height": "600px", "overflow": "auto"},
+      baseZIndex: 10000,
+      dismissableMask: true,
+      style: {
+        'align-self': 'flex-start',
+        'margin-top': '4rem'
+      },
+      data: {
+        categoriaPaquete
+      }
+    })
+
+    this.ref.onClose.subscribe( (data: any) => {
+      console.log('Hay data? ', data)
+      if (data) {
+        this.messageService.add({severity:'info', detail: data.mensaje, summary: 'Categoria Paquete Actualizado'});
         this.obtenerCategoriaPaquete();
       }
     });

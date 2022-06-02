@@ -44,7 +44,7 @@
                 <p-tag *ngIf="categoriapaquetes.estado == 0" severity="danger" value="Inactivo"></p-tag>
               </td>
               <td>
-                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
+                <button pButton pRipple (click)="mostrarModalCategoriaPaqueteActualizar(categoriapaquetes)" icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
                 <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
               </td>
             </tr>
