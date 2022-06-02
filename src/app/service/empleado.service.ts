@@ -29,4 +29,8 @@ export class EmpleadoService {
     return this.http.put(API_ROUTE + '/actualizar/' + idEmpleado, empleado, { headers: this.headers })
   }
 
+  eliminarEmpleado(idEmpleado: number) {
+    return this.http.delete(API_ROUTE + '/eliminar/' + idEmpleado, { headers: this.headers })
+  }
+
 }

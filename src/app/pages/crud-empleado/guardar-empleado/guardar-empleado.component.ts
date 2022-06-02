@@ -139,7 +139,7 @@ export class GuardarEmpleadoComponent implements OnInit {
         id: data.rol.code
       },
       email: data.email,
-      password: data.password
+      password: data.password ? data.password : null
     }
 
     if (this.idEmpleado == -1) {
