@@ -9,9 +9,10 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { PagesModule } from './pages/pages.module';
 import { HttpClientModule } from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
+import { ReactiveFormsModule} from "@angular/forms";
 import { DialogService } from "primeng/dynamicdialog";
 import { MessageService } from "primeng/api";
+import { PrimeNgModule } from "./prime-ng/prime-ng.module";
 
 registerLocaleData(localeEs);
 @NgModule({
@@ -24,7 +25,8 @@ registerLocaleData(localeEs);
     AppRoutingModule,
     PagesModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PrimeNgModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-PE' }, DialogService, MessageService],
   bootstrap: [AppComponent],

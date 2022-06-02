@@ -25,4 +25,12 @@ export class EmpleadoService {
     return this.http.post(API_ROUTE + "/registrar", empleado, { headers: this.headers } )
   }
 
+  actualizarEmpleado(idEmpleado: number, empleado: any): Observable<any> {
+    return this.http.put(API_ROUTE + '/actualizar/' + idEmpleado, empleado, { headers: this.headers })
+  }
+
+  eliminarEmpleado(idEmpleado: number) {
+    return this.http.delete(API_ROUTE + '/eliminar/' + idEmpleado, { headers: this.headers })
+  }
+
 }

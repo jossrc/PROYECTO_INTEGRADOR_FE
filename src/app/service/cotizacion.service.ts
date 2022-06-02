@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
 import { HttpClient, HttpHeaders} from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
@@ -26,3 +27,22 @@ const token = environment.TOKEN_TEST
     }
   
   }
+=======
+import {environment} from "../../environments/environment";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+
+const API_ROUTE = environment.API_ENDPOINT + "/cotizaciones";
+const token = environment.TOKEN_TEST
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CotizacionService {
+
+  private headers = new HttpHeaders()
+    .set("Content-type", "application/json")
+    .set("Authorization", token)
+
+  constructor( private http: HttpClient ) { }
+}
+>>>>>>> 2b97978071dd6c223631656b816c683979941b2a

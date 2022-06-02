@@ -7,7 +7,7 @@ import {RolService} from "../../../service/rol.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {tap} from "rxjs";
 import {Ubigeo} from "../../../models/Ubigeo";
-import {MessageService} from "primeng/api";
+import {ConfirmationService, MessageService} from "primeng/api";
 
 interface Departamento {
   name: string,
@@ -37,7 +37,8 @@ interface Rol {
 @Component({
   selector: 'app-guardar-empleado',
   templateUrl: './guardar-empleado.component.html',
-  styleUrls: ['./guardar-empleado.component.css']
+  styleUrls: ['./guardar-empleado.component.css'],
+  providers: [ MessageService,ConfirmationService ]
 })
 export class GuardarEmpleadoComponent implements OnInit {
 
@@ -46,6 +47,12 @@ export class GuardarEmpleadoComponent implements OnInit {
   listaDistritos: Distrito[] = [];
   listaRoles: Rol[] = [];
   listaLocales: Local[] = [];
+
+  idEmpleado: number = -1;
+  deseaActualizar: boolean = false
+
+  hayErrores: boolean = false
+  mensajeError: string = ''
 
   formEmpleado: FormGroup = this.formBuilder.group({
     nombre: ['', [Validators.required]],
@@ -70,12 +77,17 @@ export class GuardarEmpleadoComponent implements OnInit {
                public messageService: MessageService,
                public config: DynamicDialogConfig) {
 
-  }
-
-  ngOnInit(): void {
     this.listarDepartamentos();
     this.listarLocales();
     this.listarRoles();
+
+  }
+
+  ngOnInit(): void {
+
+    if (this.config?.data && this.config?.data?.empleado) {
+      this.atraparEmpleadoParaActualizar(this.config.data.empleado)
+    }
 
     this.formEmpleado.get('departamento')?.valueChanges.pipe(
       tap( (_) => {
@@ -102,9 +114,12 @@ export class GuardarEmpleadoComponent implements OnInit {
   }
 
   guardarEmpleado() {
+    this.hayErrores = false
+    this.mensajeError = ''
     if (this.formEmpleado.invalid) {
       this.formEmpleado.markAllAsTouched()
-      this.messageService.add({severity:'error', summary: 'Verifique que la información sea correcta', detail: 'Datos inválidos'});
+      this.hayErrores = true
+      this.mensajeError = 'Verifique que la información sea correcta'
       return;
     }
 
@@ -124,16 +139,76 @@ export class GuardarEmpleadoComponent implements OnInit {
         id: data.rol.code
       },
       email: data.email,
-      password: data.password
+      password: data.password ? data.password : null
     }
 
-    this.empleadoService.registrarEmpleado(empleado).subscribe( (data: any) => {
-      console.log(data)
-      if (data && data.ok) {
-        this.messageService.add({severity:'success', summary: 'Se ha registrado un nuevo empleado', detail: 'Registro exitoso'});
-        this.ref.close(empleado);
+    if (this.idEmpleado == -1) {
+      // Registra
+      this.empleadoService.registrarEmpleado(empleado).subscribe( (data: any) => {
+        console.log(data)
+        if (data && data.ok) {
+          this.ref.close(data);
+        } else {
+          if (!data.ok) {
+            this.hayErrores = true
+            this.mensajeError = data.mensaje
+          }
+        }
+      });
+    } else {
+      // Actualiza
+      this.empleadoService.actualizarEmpleado(this.idEmpleado, empleado).subscribe( (data: any) => {
+        console.log(data)
+        if (data && data.ok) {
+          this.ref.close(data);
+        } else {
+          if (!data.ok) {
+            this.hayErrores = true
+            this.mensajeError = data.mensaje
+          }
+        }
+      })
+    }
+
+
+  }
+
+  atraparEmpleadoParaActualizar(empleado: any) {
+    this.deseaActualizar = true
+    this.idEmpleado = empleado.idUsuario
+
+    this.formEmpleado.patchValue({
+      nombre: empleado.nombre,
+      apellido: empleado.apellido,
+      email: empleado.email,
+      dni: empleado.dni,
+      direccion: empleado.direccion,
+      local: empleado.local ? { name: empleado.local?.nombre, code: empleado.local?.idLocal } : '',
+      departamento: {
+        name: empleado.ubigeo?.departamento,
+        code: empleado.ubigeo.departamento
+      },
+      provincia: {
+        name: empleado.ubigeo?.provincia,
+        code: empleado.ubigeo?.provincia
+      },
+      distrito: {
+        name: empleado.ubigeo?.distrito,
+        code: empleado.ubigeo?.idUbigeo
+      },
+      rol: {
+        name: empleado.rol?.nombre?.replace("ROLE_", ""),
+        code: empleado.rol?.id
       }
-    });
+    })
+
+    this.listarProvincias(empleado.ubigeo?.provincia)
+    this.listarDistritos(empleado.ubigeo?.departamento , empleado.ubigeo?.provincia)
+
+    // Limpiamos el validador para la contraseña
+    this.formEmpleado.get('password')?.clearValidators();
+    this.formEmpleado.get('password')?.updateValueAndValidity();
+
   }
 
   listarDepartamentos() {
@@ -203,6 +278,11 @@ export class GuardarEmpleadoComponent implements OnInit {
     return (
       this.formEmpleado.controls[field].errors && this.formEmpleado.controls[field].touched
     );
+  }
+
+  cerrarAlertError() {
+    this.hayErrores = false
+    this.mensajeError = ''
   }
 
 }

@@ -17,6 +17,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { TooltipModule } from 'primeng/tooltip';
 import { FileUploadModule } from 'primeng/fileupload';
 import { MenuModule } from 'primeng/menu';
+import { ChipsModule } from 'primeng/chips';
 
 import { BadgeModule } from 'primeng/badge';
 import { StyleClassModule } from 'primeng/styleclass';
@@ -52,6 +53,7 @@ import {InputSwitchModule} from "primeng/inputswitch";
     MessageModule,
     ToastModule,
     TagModule,
+    ChipsModule,
     InputSwitchModule
   ],
   declarations: [],
