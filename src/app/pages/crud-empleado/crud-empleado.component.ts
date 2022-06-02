@@ -50,9 +50,35 @@ export class CrudEmpleadoComponent implements OnInit {
     this.ref.onClose.subscribe( (data: any) => {
       console.log('Hay data? ', data)
       if (data) {
+        this.messageService.add({severity:'info', detail: data.mensaje, summary: 'Empleado Actualizado'});
         this.obtenerEmpleados();
       }
-      //this.messageService.add({severity:'info', summary: 'Producto registrado', detail: 'Producto'});
+    });
+
+  }
+
+  public mostrarModalEmpleadoActualizar(empleado: any) {
+    this.ref = this.dialogService.open( GuardarEmpleadoComponent, {
+      header: "Actualizar un empleado",
+      width: '50%',
+      contentStyle: {"max-height": "600px", "overflow": "auto"},
+      baseZIndex: 10000,
+      dismissableMask: true,
+      style: {
+        'align-self': 'flex-start',
+        'margin-top': '4rem'
+      },
+      data: {
+        empleado
+      }
+    })
+
+    this.ref.onClose.subscribe( (data: any) => {
+      console.log('Hay data? ', data)
+      if (data) {
+        this.messageService.add({severity:'info', detail: data.mensaje, summary: 'Empleado Registrado'});
+        this.obtenerEmpleados();
+      }
     });
 
   }
