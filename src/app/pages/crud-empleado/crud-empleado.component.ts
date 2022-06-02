@@ -51,7 +51,7 @@ export class CrudEmpleadoComponent implements OnInit {
     this.ref.onClose.subscribe( (data: any) => {
       console.log('Hay data? ', data)
       if (data) {
-        this.messageService.add({severity:'info', detail: data.mensaje, summary: 'Empleado Actualizado'});
+        this.messageService.add({severity:'info', detail: data.mensaje, summary: 'Empleado Registrado'});
         this.obtenerEmpleados();
       }
     });
@@ -77,7 +77,7 @@ export class CrudEmpleadoComponent implements OnInit {
     this.ref.onClose.subscribe( (data: any) => {
       console.log('Hay data? ', data)
       if (data) {
-        this.messageService.add({severity:'info', detail: data.mensaje, summary: 'Empleado Registrado'});
+        this.messageService.add({severity:'info', detail: data.mensaje, summary: 'Empleado Actualizado'});
         this.obtenerEmpleados();
       }
     });
