@@ -1,0 +1,62 @@
+
+<div class="surface-ground px-4 py-4 md:px-6 lg:px-8">
+  <div class="text-900 font-medium text-xl mb-3">Crear cotización</div>
+  <form [formGroup]="formCotizacion" (ngSubmit)="registrarCotizacion()">
+    <div class="surface-card p-4 shadow-2 border-round p-fluid">
+      <div class="grid formgrid p-fluid">
+        <div class="field mb-4 col-12 md:col-12">
+          <label for="direccionDestino" class="font-medium text-900">Dirección Destino</label>
+          <input formControlName="direccionDestino" id="direccionDestino" type="text" pInputText>
+        </div>
+
+        <div class="field mb-4 col-12 md:col-4">
+          <label class="font-medium text-900">Departamento</label>
+          <p-dropdown [options]="listaDepartamentos" formControlName="departamento" [class]=" isValidField('departamento') ? 'ng-invalid ng-dirty' : '' "  placeholder="Seleccione departamento" optionLabel="name" [showClear]="true"></p-dropdown>
+          <small *ngIf="isValidField('departamento')" class="p-error block">No puede estar vacío</small>
+        </div>
+
+        <div class="field mb-4 col-12 md:col-4">
+          <label class="font-medium text-900">Provincia</label>
+          <p-dropdown [options]="listaProvincias" formControlName="provincia" [class]=" isValidField('provincia') ? 'ng-invalid ng-dirty' : '' " placeholder="Seleccione provincia" optionLabel="name" [showClear]="true"></p-dropdown>
+          <small *ngIf="isValidField('provincia')" class="p-error block">No puede estar vacío</small>
+        </div>
+
+        <div class="field mb-4 col-12 md:col-4">
+          <label class="font-medium text-900">Distrito</label>
+          <p-dropdown [options]="listaDistritos"  formControlName="distrito" [class]=" isValidField('distrito') ? 'ng-invalid ng-dirty' : '' " placeholder="Seleccione distrito" optionLabel="name" [showClear]="true"></p-dropdown>
+          <small *ngIf="isValidField('distrito')" class="p-error block">No puede estar vacío</small>
+        </div>
+
+        <div class="surface-border border-top-1 opacity-50 mb-4 col-12"></div>
+
+        <div class="field mb-4 col-12 md:col-12">
+          <div class="text-900 font-medium text-xl mb-1">Registrar Paquete</div>
+        </div>
+
+        <div class="field mb-4 col-12 md:col-6">
+          <label class="font-medium text-900">Productos</label>
+          <p-chips formControlName="productos" ></p-chips>
+        </div>
+        <div class="field mb-4 col-6 md:col-3">
+          <label class="font-medium text-900">Cantidad</label>
+          <p-inputNumber formControlName="cantidad" mode="decimal" inputId="withoutgrouping" [useGrouping]="false"></p-inputNumber>
+        </div>
+        <div class="field mb-4 col-6 md:col-3">
+          <label  class="font-medium text-900">Peso Total</label>
+          <div class="flex align-content-center">
+            <p-inputNumber formControlName="pesoTotal" inputId="locale-us" mode="decimal" [useGrouping]="false" locale="es-PE" [minFractionDigits]="2">
+            </p-inputNumber>
+          </div>
+        </div>
+        <div class="surface-border border-top-1 opacity-50 mb-4 col-12"></div>
+        <div class="field mb-4 col-12">
+          <label for="notes" class="font-medium text-900">Descripción</label>
+          <textarea id="notes" formControlName="descripcion" pInputTextarea [autoResize]="true" [rows]="5"></textarea>
+        </div>
+        <div class="surface-border border-top-1 opacity-50 mb-4 col-12"></div>
+      </div>
+      <button pButton pRipple label="Crear cotización" icon="pi pi-file" class="w-auto"></button>
+    </div>
+  </form>
+
+</div>

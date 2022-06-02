@@ -11,9 +11,10 @@ import { CrudLocalComponent } from './crud-local/crud-local.component';
 import { CrudCategoriaPaqueteComponent } from './crud-categoria-paquete/crud-categoria-paquete.component';
 import { CrudVehiculoComponent } from './crud-vehiculo/crud-vehiculo.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { GenerarCotizacionComponent } from './generar-cotizacion/generar-cotizacion.component';
 
 @NgModule({
-  declarations: [AdminHomeComponent, ListaUsuariosComponent, CrudEmpleadoComponent, GuardarEmpleadoComponent, CrudLocalComponent, CrudCategoriaPaqueteComponent,GuardarCategoriaPaqueteComponent, CrudVehiculoComponent],
+  declarations: [AdminHomeComponent, ListaUsuariosComponent, CrudEmpleadoComponent, GuardarEmpleadoComponent, CrudLocalComponent, CrudCategoriaPaqueteComponent,GuardarCategoriaPaqueteComponent, CrudVehiculoComponent, GenerarCotizacionComponent],
   exports: [AdminHomeComponent],
   imports: [CommonModule, PrimeNgModule, ToolbarModule, ReactiveFormsModule],
 })
