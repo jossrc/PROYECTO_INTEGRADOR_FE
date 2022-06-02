@@ -6,6 +6,7 @@ import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.componen
 import { CrudEmpleadoComponent } from './crud-empleado/crud-empleado.component';
 import {ToolbarModule} from "primeng/toolbar";
 import { GuardarEmpleadoComponent } from './crud-empleado/guardar-empleado/guardar-empleado.component';
+import { GuardarVehiculoComponent } from './crud-vehiculo/guardar-vehiculo/guardar-vehiculo.component';
 import { GuardarCategoriaPaqueteComponent } from './crud-categoria-paquete/guardar-categoria-paquete/guardar-categoria-paquete.component';
 import { CrudLocalComponent } from './crud-local/crud-local.component';
 import { CrudCategoriaPaqueteComponent } from './crud-categoria-paquete/crud-categoria-paquete.component';
@@ -14,7 +15,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { GenerarCotizacionComponent } from './generar-cotizacion/generar-cotizacion.component';
 
 @NgModule({
-  declarations: [AdminHomeComponent, ListaUsuariosComponent, CrudEmpleadoComponent, GuardarEmpleadoComponent, CrudLocalComponent, CrudCategoriaPaqueteComponent,GuardarCategoriaPaqueteComponent, CrudVehiculoComponent, GenerarCotizacionComponent],
+  declarations: [AdminHomeComponent, ListaUsuariosComponent, GuardarVehiculoComponent, CrudEmpleadoComponent, GuardarEmpleadoComponent, CrudLocalComponent, CrudCategoriaPaqueteComponent,GuardarCategoriaPaqueteComponent, CrudVehiculoComponent, GenerarCotizacionComponent],
   exports: [AdminHomeComponent],
   imports: [CommonModule, PrimeNgModule, ToolbarModule, ReactiveFormsModule],
 })
