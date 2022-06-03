@@ -18,7 +18,7 @@ export class LocalService {
   constructor( private http: HttpClient ) { }
 
   public listarLocales(): Observable<any> {
-    return this.http.get(API_ROUTE, { headers: this.headers })
+    return this.http.get(API_ROUTE +"/listar", { headers: this.headers })
   }
 
 }
