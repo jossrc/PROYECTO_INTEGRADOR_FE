@@ -26,4 +26,9 @@ export class VehiculoService {
   actualizarVehiculo(idVehiculo: number, vehiculo: any): Observable<any> {
     return this.http.put(API_ROUTE + '/actualizar/' + idVehiculo, vehiculo, { headers: this.headers })
   }
+
+  eliminarVehiculo(idVehiculo: number) {
+    return this.http.delete(API_ROUTE + '/eliminar/' + idVehiculo, { headers: this.headers })
+  }
+
 }
