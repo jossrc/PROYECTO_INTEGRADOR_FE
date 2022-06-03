@@ -3,7 +3,7 @@ import {ConfirmationService, MessageService} from "primeng/api";
 import {CategoriaPaqueteService} from "../../service/categoria-paquete.service";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import {GuardarCategoriaPaqueteComponent} from "./guardar-categoria-paquete/guardar-categoria-paquete.component";
-
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-crud-categoria-paquete',
@@ -84,6 +84,31 @@ export class CrudCategoriaPaqueteComponent implements OnInit {
       }
     });
 
+  }
+
+  eliminarCategoriaPaquete(idCategoria: number) {
+    Swal.fire({
+      title: 'Eliminar categoria paquete',
+      text: "¿Estás seguro de eliminar la categoria paquete?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'No, cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.categoriaPaqueteService.eliminarCategoriaPaquete(idCategoria).subscribe( (data) => {
+          this.obtenerCategoriaPaquete()
+          Swal.fire(
+            'Eliminado!',
+            'La categoria paquete se ha eliminado',
+            'success'
+          )
+        })
+
+      }
+    })
   }
 
 }

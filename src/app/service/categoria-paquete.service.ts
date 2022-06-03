@@ -28,4 +28,8 @@ export class CategoriaPaqueteService {
     return this.http.put(API_ROUTE + '/actualizar/' + idCategoria, categoriaPaquete, { headers: this.headers })
   }
 
+  eliminarCategoriaPaquete(idCategoria: number) {
+    return this.http.delete(API_ROUTE + '/eliminar/' + idCategoria, { headers: this.headers })
+  }
+
 }
