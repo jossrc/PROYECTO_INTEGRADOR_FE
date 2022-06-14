@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 const API_ROUTE = environment.API_ENDPOINT + "/roles";
-const token = environment.TOKEN_TEST
+const token = "Bearer " + localStorage.getItem('postales_token') || environment.TOKEN_TEST
 
 @Injectable({
   providedIn: 'root'

@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 
 const API_ROUTE = environment.API_ENDPOINT + "/categoriaPaquete";
-const token = environment.TOKEN_TEST
+const token = "Bearer " + localStorage.getItem('postales_token') || environment.TOKEN_TEST
 
 @Injectable({
   providedIn: 'root'

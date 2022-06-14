@@ -3,7 +3,7 @@ import {environment} from "../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 const API_ROUTE = environment.API_ENDPOINT + "/cotizaciones";
-const token = environment.TOKEN_TEST
+const token = "Bearer " + localStorage.getItem('postales_token') || environment.TOKEN_TEST
 
 @Injectable({
   providedIn: 'root'

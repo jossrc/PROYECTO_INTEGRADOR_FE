@@ -11,6 +11,11 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 
 @NgModule({
   declarations: [LoginComponent, RegistroComponent, MainComponent],
-  imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule, PrimeNgModule],
+  imports: [
+    CommonModule,
+    AuthRoutingModule,
+    ReactiveFormsModule,
+    PrimeNgModule,
+  ],
 })
 export class AuthModule {}
