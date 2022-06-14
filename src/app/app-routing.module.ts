@@ -11,6 +11,7 @@ import { GenerarCotizacionComponent } from './pages/generar-cotizacion/generar-c
 import { AuthLayoutComponent } from './shared/layout/auth-layout/auth-layout.component';
 import { UsuarioLayoutComponent } from './shared/layout/usuario-layout/usuario-layout.component';
 import { ValidarTokenGuard } from './guards/validar-token.guard';
+import { ListaEnviosComponent } from './pages/lista-envios/lista-envios.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: 'admin/local', component: CrudLocalComponent },
       { path: 'admin/clientes', component: ListaUsuariosComponent },
       { path: 'cotizacion', component: GenerarCotizacionComponent },
+      { path: 'listEnvio', component: ListaEnviosComponent},
       { path: '**', component: AdminHomeComponent },
     ],
     canLoad: [ValidarTokenGuard],
