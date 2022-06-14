@@ -12,7 +12,7 @@ const API_ROUTE = environment.API_ENDPOINT;
 export class AuthService {
 
   private headers = new HttpHeaders()
-    .set("Content-type", "application/json")
+    .set("Content-Type", "application/json")
 
   constructor( private http: HttpClient ) { }
 

@@ -12,6 +12,7 @@ import { AuthLayoutComponent } from './shared/layout/auth-layout/auth-layout.com
 import { UsuarioLayoutComponent } from './shared/layout/usuario-layout/usuario-layout.component';
 import { ValidarTokenGuard } from './guards/validar-token.guard';
 import { ListaEnviosComponent } from './pages/lista-envios/lista-envios.component';
+import { LoginComponent } from './auth/pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -23,17 +24,18 @@ const routes: Routes = [
     path: '',
     component: UsuarioLayoutComponent,
     children: [
-      { path: 'admin/home', component: AdminHomeComponent },
-      { path: 'admin/empleados', component: CrudEmpleadoComponent },
+      { path: 'admin/home', component: AdminHomeComponent, pathMatch: 'full' },
+      { path: 'admin/empleados', component: CrudEmpleadoComponent, pathMatch: 'full' },
       {
         path: 'admin/categoria-paquete',
         component: CrudCategoriaPaqueteComponent,
+        pathMatch: 'full'
       },
-      { path: 'admin/vehiculo', component: CrudVehiculoComponent },
-      { path: 'admin/local', component: CrudLocalComponent },
-      { path: 'admin/clientes', component: ListaUsuariosComponent },
-      { path: 'cotizacion', component: GenerarCotizacionComponent },
-      { path: 'listEnvio', component: ListaEnviosComponent},
+      { path: 'admin/vehiculo', component: CrudVehiculoComponent, pathMatch: 'full' },
+      { path: 'admin/local', component: CrudLocalComponent, pathMatch: 'full' },
+      { path: 'admin/clientes', component: ListaUsuariosComponent, pathMatch: 'full' },
+      { path: 'cotizacion', component: GenerarCotizacionComponent, pathMatch: 'full' },
+      { path: 'listEnvio', component: ListaEnviosComponent, pathMatch: 'full'},
       { path: '**', component: AdminHomeComponent },
     ],
     canLoad: [ValidarTokenGuard],

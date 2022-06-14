@@ -11,7 +11,7 @@ const token = "Bearer " + localStorage.getItem('postales_token') || environment.
 export class CotizacionService {
 
   private headers = new HttpHeaders()
-    .set("Content-type", "application/json")
+    .set("Content-Type", "application/json")
     .set("Authorization", token)
 
   constructor( private http: HttpClient ) { }

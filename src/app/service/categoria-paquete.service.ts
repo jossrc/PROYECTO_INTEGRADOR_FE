@@ -12,8 +12,8 @@ const token = "Bearer " + localStorage.getItem('postales_token') || environment.
 export class CategoriaPaqueteService {
 
   private headers = new HttpHeaders()
-  .set("Content-type", "application/json")
-  .set("Authorization", token)
+    .set("Content-Type", "application/json")
+    .set("Authorization", token)
 
   constructor(private http: HttpClient) { }
 
