@@ -4,15 +4,16 @@ import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 
 const API_ROUTE = environment.API_ENDPOINT + "/vehiculo";
-const token = environment.TOKEN_TEST
+const token = "Bearer " + localStorage.getItem('postales_token') || environment.TOKEN_TEST
 
 @Injectable({
   providedIn: 'root'
 })
 export class VehiculoService {
+
   private headers = new HttpHeaders()
-  .set("Content-type", "application/json")
-  .set("Authorization", token)
+    .set("Content-Type", "application/json")
+    .set("Authorization", token)
 
   constructor(private http: HttpClient) { }
 

@@ -1,7 +1,7 @@
-export class Vehiculo{
-    idVehiculo?:number;
-    placa?:String;
-    modelo?:String;
-    capacidad?:number;
-    estado?:number;
+export interface Vehiculo {
+  idVehiculo?: number;
+  placa?: string;
+  modelo?: string;
+  capacidad?: number;
+  estado?: number;
 }

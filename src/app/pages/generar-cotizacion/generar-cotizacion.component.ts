@@ -8,6 +8,8 @@ import { tap } from "rxjs";
 import { Ubigeo } from "../../models/Ubigeo";
 import { MessageService } from "primeng/api";
 import {CotizacionService} from "../../service/cotizacion.service";
+import { CategoriaPaquete } from 'src/app/models/CategoriaPaquete';
+import { CategoriaPaqueteService } from 'src/app/service/categoria-paquete.service';
 
 interface Departamento {
   name: string,
@@ -24,6 +26,12 @@ interface Distrito {
   code: number // ubigeoId
 }
 
+interface Categoria {
+  name: string,
+  code: number 
+}
+
+
 @Component({
   selector: 'app-generar-cotizacion',
   templateUrl: './generar-cotizacion.component.html',
@@ -34,6 +42,7 @@ export class GenerarCotizacionComponent implements OnInit {
   listaDepartamentos : Departamento[] = [];
   listaProvincias: Provincia[] = [];
   listaDistritos: Distrito[] = [];
+  listaCategorias: Categoria[] = [];
 
   productos: string[] = []
 
@@ -44,6 +53,7 @@ export class GenerarCotizacionComponent implements OnInit {
     distrito: ['', [Validators.required]], // Ubigeo
     productos: [ '', [Validators.required]  ],
     cantidad: [ '', [Validators.required] ],
+    categoria: ['', [Validators.required]],
     pesoTotal: [ '', [Validators.required] ],
     descripcion: [ '', [Validators.required]  ]
   })
@@ -52,12 +62,14 @@ export class GenerarCotizacionComponent implements OnInit {
                private ubigeoService: UbigeoService,
                private localService: LocalService,
                private rolService: RolService,
+               private categoriaService: CategoriaPaqueteService,
                private formBuilder: FormBuilder,
                public messageService: MessageService,
                private cotizacionService: CotizacionService
             ) {
 
     this.listarDepartamentos();
+    this.listarCategoria()
   }
 
   ngOnInit(): void {
@@ -84,6 +96,18 @@ export class GenerarCotizacionComponent implements OnInit {
       }
     });
 
+  }
+
+  listarCategoria(){
+    this.categoriaService.listarCategoriaPaquete().subscribe((obj: any) =>{
+      const data = obj.datos.map((categoria:CategoriaPaquete) : Categoria =>{
+        return{
+          name: categoria.nombre!,
+          code: categoria.idCategoria!
+        }
+      });
+      this.listaCategorias = data;
+    })
   }
 
   listarDepartamentos() {
@@ -150,7 +174,8 @@ export class GenerarCotizacionComponent implements OnInit {
       paquete: {
         productos: JSON.stringify(data.productos),
         cantidad: data.cantidad,
-        pesoTotal: data.pesoTotal
+        pesoTotal: data.pesoTotal,
+        categoria: data.categoriaPaquete
       }
     }
 
