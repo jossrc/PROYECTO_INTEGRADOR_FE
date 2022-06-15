@@ -21,6 +21,7 @@ export class AuthService {
     return this.http.post<AuthResponse>(API_ROUTE + '/login', loginData, { headers: this.headers }).pipe(
       tap((resp: AuthResponse) => {
         if (resp && resp.token) {
+          localStorage.setItem('postales_role', btoa(resp.user.authorities[0].role))
           localStorage.setItem('postales_token', resp.token);
         }
       }),
@@ -31,8 +32,18 @@ export class AuthService {
     return localStorage.getItem('postales_token');
   }
 
+  getRole(): string | null {
+    const baseRole = localStorage.getItem('postales_role')
+    if (baseRole) {
+      return atob(baseRole);
+    }
+
+    return null;
+  }
+
   logout() {
     localStorage.removeItem('postales_token');
+    localStorage.removeItem('postales_role');
   }
 
 }

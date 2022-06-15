@@ -68,8 +68,13 @@ export class RegistroComponent implements OnInit {
     private usuarioService: UsuarioService,
     private router: Router,
     private ubigeoService: UbigeoService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) {
+    if (this.authService.getToken()) {
+      this.router.navigate(['/admin/home']);
+    }
+
     this.listarDepartamentos();
   }
 
