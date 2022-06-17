@@ -25,167 +25,48 @@
             <i class="pi pi-chevron-down"></i>
           </div>
           <ul class="list-none p-0 m-0 overflow-hidden">
-            <li>
-              <a
-                routerLink="admin/home"
-                pRipple
-                class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
-                style="text-decoration: none;"
-              >
-                <i class="pi pi-home mr-2"></i>
-                <span class="font-medium">Home</span>
-              </a>
-            </li>
-            <li>
-              <a
-                routerLink="admin/empleados"
-                pRipple
-                class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
-                style="text-decoration: none;"
-              >
-              <i class="fa-solid fa-users-gear mr-2"></i>
-                <span class="font-medium">Empleados</span>
-              </a>
-            </li>
-            <li>
-              <a
-                pRipple
-                class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
-              >
-                <i class="pi pi-users mr-2"></i>
-                <span class="font-medium">Clientes</span>
-              </a>
-            </li>
-            <li>
-              <a
-                routerLink="admin/categoria-paquete"
-                pRipple
-                class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
-                style="text-decoration: none;"
-              >
-              <i class="fa-solid fa-box mr-2"></i>
-                <span class="font-medium">Categoria Paquetes</span>
-              </a>
-            </li>
-
-            <li>
-              <a
-                routerLink="admin/vehiculo"
-                pRipple
-                class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
-                style="text-decoration: none;"
-              >
-              <i class="fa-solid fa-car mr-2"></i>
-                <span class="font-medium">Vehículos</span>
-              </a>
-            </li>
-
-            <li>
-              <a
-                routerLink="admin/local"
-                pRipple
-                class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
-                style="text-decoration: none;"
-              >
-              <i class="fa-solid fa-house mr-2"></i>
-                <span class="font-medium">Locales</span>
-              </a>
-            </li>
-
-            <li>
-              <a
-                pRipple
-                class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
-                pStyleClass="@next"
-                enterClass="hidden"
-                enterActiveClass="slidedown"
-                leaveToClass="hidden"
-                leaveActiveClass="slideup"
-              >
-                <i class="pi pi-chart-line mr-2"></i>
-                <span class="font-medium">Cotizaciones</span>
+            <li *ngFor="let item of listaMenuItems">
+              <ng-container *ngIf="item.type == 'link'">
+                  <a
+                    [routerLink]="item.state"
+                    pRipple
+                    class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
+                    style="text-decoration: none;"
+                  >
+                    <i [class]="setIconClass(item)"></i>
+                  <span class="font-medium"> {{ item.name }} </span>
+                </a>
+              </ng-container>
+              <ng-container *ngIf="item.type == 'menu'">
+                <a
+                  pRipple
+                  class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
+                  pStyleClass="@next"
+                  enterClass="hidden"
+                  enterActiveClass="slidedown"
+                  leaveToClass="hidden"
+                  leaveActiveClass="slideup"
+                >
+                <i [class]="setIconClass(item)"></i>
+                <span class="font-medium"> {{ item.name }} </span>
                 <i class="pi pi-chevron-down ml-auto"></i>
               </a>
               <ul
                 class="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out"
               >
-                <li>
+                <li *ngFor="let subitem of item.sub">
                   <a
                     pRipple
-                    routerLink="cotizacion"
+                    [routerLink]="subitem.state"
                     style="text-decoration: none;"
                     class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
                   >
-                    <i class="pi pi-dollar mr-2"></i>
-                    <span class="font-medium">Generar Cotización</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    pRipple
-                    class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
-                  >
-                    <i class="pi pi-chart-bar mr-2"></i>
-                    <span class="font-medium">Lista de Cotizaciones</span>
+                    <i [class]="setIconClass(subitem)"></i>
+                    <span class="font-medium"> {{ subitem.name }} </span>
                   </a>
                 </li>
               </ul>
-            </li>
-            <li>
-              <a
-                pRipple
-                class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
-                pStyleClass="@next"
-                enterClass="hidden"
-                enterActiveClass="slidedown"
-                leaveToClass="hidden"
-                leaveActiveClass="slideup"
-              >
-                <i class="pi pi-car mr-2"></i>
-                <span class="font-medium">Envíos</span>
-                <i class="pi pi-chevron-down ml-auto"></i>
-              </a>
-              <ul
-                class="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out"
-              >
-                <li>
-                  <a
-                    pRipple
-                    class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
-                    routerLink="listEnvio"
-                  >
-                    <i class="pi pi-ticket mr-2"></i>
-                    <span class="font-medium">Lista de envíos</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    pRipple
-                    class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
-                  >
-                    <i class="pi pi-map-marker mr-2"></i>
-                    <span class="font-medium">Estado de envíos</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    pRipple
-                    class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
-                  >
-                    <i class="pi pi-flag-fill mr-2"></i>
-                    <span class="font-medium">Problemas</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a
-                pRipple
-                class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors"
-              >
-                <i class="pi pi-cog mr-2"></i>
-                <span class="font-medium">Configuraciones</span>
-              </a>
+              </ng-container>
             </li>
           </ul>
         </li>

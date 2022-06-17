@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { Login } from '../../../interfaces/login.interface';
+import { NavigationService } from '../../../service/navigation.service';
 
 @Component({
   selector: 'app-login',
@@ -19,8 +20,15 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+    private navigationService: NavigationService
+  ) {
+
+    if (authService.getToken()) {
+      this.router.navigate(['/admin/home'])
+    }
+
+   }
 
   ngOnInit(): void {
   }
@@ -35,7 +43,8 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(login).subscribe( (data) => {
       if (data && data.token) {
-        this.router.navigate(['/home'])
+        this.navigationService.elegirMenuItems(data.user.authorities[0].role)
+        this.router.navigate(['/admin/home'])
       }
     })
 
