@@ -3,6 +3,7 @@ import {ConfirmationService, MessageService} from "primeng/api";
 import {VehiculoService} from "../../service/vehiculo.service";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import {GuardarVehiculoComponent} from "./guardar-vehiculo/guardar-vehiculo.component";
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-crud-vehiculo',
@@ -81,6 +82,31 @@ export class CrudVehiculoComponent implements OnInit {
       }
     });
 
+  }
+
+  eliminarVehiculo(idVehiculo: number) {
+    Swal.fire({
+      title: 'Eliminar vehiculo',
+      text: "¿Estás seguro de eliminar el vehiculo?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'No, cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.vehiculoService.eliminarVehiculo(idVehiculo).subscribe( (data) => {
+          this.obtenerVehiculo()
+          Swal.fire(
+            'Eliminado!',
+            'El vehiculo se ha eliminado',
+            'success'
+          )
+        })
+
+      }
+    })
   }
 
 }

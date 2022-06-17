@@ -227,13 +227,16 @@ export class GuardarEmpleadoComponent implements OnInit {
 
   listarLocales() {
     this.localService.listarLocales().subscribe( (locales: any) => {
-      const data = locales.map( (local: any): Local => {
-        return {
-          name: local.nombre,
-          code: local.idLocal
-        }
-      })
-      this.listaLocales = data;
+      if(locales.datos && locales.datos.length > 0){
+        const data = locales.datos.map( (local: any): Local => {
+          return {
+            name: local.nombre,
+            code: local.idLocal
+          }
+        })
+        this.listaLocales = data;
+     
+      }
     });
   }
 

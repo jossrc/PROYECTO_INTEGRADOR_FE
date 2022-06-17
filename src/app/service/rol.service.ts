@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 const API_ROUTE = environment.API_ENDPOINT + "/roles";
-const token = environment.TOKEN_TEST
+const token = "Bearer " + localStorage.getItem('postales_token') || environment.TOKEN_TEST
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ const token = environment.TOKEN_TEST
 export class RolService {
 
   private headers = new HttpHeaders()
-    .set("Content-type", "application/json")
+    .set("Content-Type", "application/json")
     .set("Authorization", token)
 
   constructor( private http: HttpClient ) { }
