@@ -12,13 +12,19 @@ import { AuthLayoutComponent } from './shared/layout/auth-layout/auth-layout.com
 import { UsuarioLayoutComponent } from './shared/layout/usuario-layout/usuario-layout.component';
 import { ValidarTokenGuard } from './guards/validar-token.guard';
 import { ListaEnviosComponent } from './pages/lista-envios/lista-envios.component';
-import { LoginComponent } from './auth/pages/login/login.component';
 
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
     component: AuthLayoutComponent,
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    // canLoad: [ValidarLoginGuard],
+    // canActivate: [ValidarLoginGuard],
   },
   {
     path: '',
