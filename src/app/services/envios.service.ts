@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -18,6 +18,17 @@ export class EnviosService {
     .set("Authorization", token)
 
   constructor(private http:HttpClient) { }
+
+  
+  consultarId(usuario:number): Observable<any> {
+
+     const params = new HttpParams()
+           .set("idUsu", usuario);
+
+    return this.http.get(baseURL + "/listaEnviosUsu/", {params});
+
+  }
+
 
  consultar(): Observable<Envio[]>{
    
