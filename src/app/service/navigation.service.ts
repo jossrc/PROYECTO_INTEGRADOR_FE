@@ -140,6 +140,12 @@ export class NavigationService {
           icon: 'pi pi-map-marker',
         },
         {
+          name: 'Mis Envíos',
+          state: 'mis-envios',
+          type: 'link',
+          icon: 'pi pi-map-marker',
+        },
+        {
           name: 'Problemas',
           state: 'admin/problemas',
           type: 'link',

@@ -6,7 +6,7 @@ import { Envio } from '../models/Envio';
 
 
  const baseURL = "http://localhost:8090/api/envios"
- const token = environment.TOKEN_TEST
+ const token = "Bearer " + localStorage.getItem('postales_token') || environment.TOKEN_TEST
 
 @Injectable({
   providedIn: 'root'
@@ -22,10 +22,9 @@ export class EnviosService {
   
   consultarId(usuario:number): Observable<any> {
 
-     const params = new HttpParams()
-           .set("idUsu", usuario);
+     
 
-    return this.http.get(baseURL + "/listaEnviosUsu/", {params});
+    return this.http.get(baseURL + "/listaEnviosUsu/" + usuario, { headers: this.headers});
 
   }
 
