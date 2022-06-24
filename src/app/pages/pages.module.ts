@@ -10,6 +10,7 @@ import { GuardarEmpleadoComponent } from './crud-empleado/guardar-empleado/guard
 import { GuardarVehiculoComponent } from './crud-vehiculo/guardar-vehiculo/guardar-vehiculo.component';
 import { GuardarCategoriaPaqueteComponent } from './crud-categoria-paquete/guardar-categoria-paquete/guardar-categoria-paquete.component';
 import { CrudLocalComponent } from './crud-local/crud-local.component';
+import { GuardarLocalComponent } from './crud-local/guardar-local/guardar-local.component';
 import { CrudCategoriaPaqueteComponent } from './crud-categoria-paquete/crud-categoria-paquete.component';
 import { CrudVehiculoComponent } from './crud-vehiculo/crud-vehiculo.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -25,6 +26,7 @@ import { MisEnviosComponent } from './mis-envios/mis-envios.component';
     CrudEmpleadoComponent,
     GuardarEmpleadoComponent,
     CrudLocalComponent,
+    GuardarLocalComponent,
     CrudCategoriaPaqueteComponent,
     GuardarCategoriaPaqueteComponent,
     CrudVehiculoComponent,

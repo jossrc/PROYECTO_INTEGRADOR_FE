@@ -95,6 +95,7 @@ export class GuardarLocalComponent implements OnInit {
     guardarLocal() {
       this.hayErrores = false
       this.mensajeError = ''
+      console.log(this.formLocal.value)
       if (this.formLocal.invalid) {
         this.formLocal.markAllAsTouched()
         this.hayErrores = true
@@ -103,10 +104,17 @@ export class GuardarLocalComponent implements OnInit {
       }
   
       const data = this.formLocal.value;
+
+      const apertura = new Date(new Date(data.hora_inicio).setSeconds(0)).toLocaleTimeString();
+
+      const cierre = new Date(new Date(data.hora_fin).setSeconds(0)).toLocaleTimeString();
+
+      console.log(apertura);
+
       const local = {
         nombre: data.nombre,
-        hora_inicio: data.hora_inicio,
-        hora_fin: data.hora_fin,
+        hora_inicio: apertura,
+        hora_fin: cierre,
         direccion: data.direccion,
         ubigeo: {
           idUbigeo: data.distrito.code,
@@ -144,14 +152,25 @@ export class GuardarLocalComponent implements OnInit {
   
     }
   
+    private toDateWithOutTimeZone(time:string) {
+      let tempTime = time.split(":").map(num=>Number(num));
+      let dt = new Date();
+      dt.setHours(tempTime[0]);
+      dt.setMinutes(tempTime[1]);
+      dt.setSeconds(tempTime[2]);
+      return dt;
+    }
+
     atraparLocalParaActualizar(local: any) {
       this.deseaActualizar = true
       this.idLocal = local.idUsuario
   
+      
+
       this.formLocal.patchValue({
         nombre: local.nombre,
-        hora_inicio: local.hora_inicio,
-        hora_fin: local.hora_fin,
+        hora_inicio: this.toDateWithOutTimeZone(local.hora_inicio),
+        hora_fin: this.toDateWithOutTimeZone(local.hora_fin),
         direccion: local.direccion,
         departamento: {
           name: local.ubigeo?.departamento,

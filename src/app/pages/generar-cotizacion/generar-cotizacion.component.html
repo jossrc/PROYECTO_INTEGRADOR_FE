@@ -48,6 +48,11 @@
             </p-inputNumber>
           </div>
         </div>
+        <div class="field mb-4 col-12 md:col-4">
+          <label class="font-medium text-900">Categoria</label>
+          <p-dropdown [options]="listaCategorias" formControlName="categoria" [class]=" isValidField('categoria') ? 'ng-invalid ng-dirty' : '' "  placeholder="Seleccione categoria" optionLabel="name" [showClear]="true"></p-dropdown>
+          <small *ngIf="isValidField('categoria')" class="p-error block">No puede estar vacío</small>
+        </div>  
         <div class="surface-border border-top-1 opacity-50 mb-4 col-12"></div>
         <div class="field mb-4 col-12">
           <label for="notes" class="font-medium text-900">Descripción</label>
