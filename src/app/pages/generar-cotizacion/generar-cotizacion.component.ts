@@ -10,6 +10,7 @@ import { MessageService } from "primeng/api";
 import {CotizacionService} from "../../service/cotizacion.service";
 import { CategoriaPaquete } from 'src/app/models/CategoriaPaquete';
 import { CategoriaPaqueteService } from 'src/app/service/categoria-paquete.service';
+import Swal from 'sweetalert2';
 
 interface Departamento {
   name: string,
@@ -28,7 +29,7 @@ interface Distrito {
 
 interface Categoria {
   name: string,
-  code: number 
+  code: number
 }
 
 
@@ -171,13 +172,12 @@ export class GenerarCotizacionComponent implements OnInit {
       ubigeo: {
         idUbigeo: data.distrito.code
       },
-      paquete: {
-        productos: JSON.stringify(data.productos),
-        cantidad: data.cantidad,
-        pesoTotal: data.pesoTotal,
-        categoria: data.categoriaPaquete
-      }
-    }
+      productos: data.productos,
+      cantidad: data.cantidad,
+      pesoTotal: data.pesoTotal,
+      idCategoria: data.categoria.code
+    };
+    console.log(cotizacion);
 
     // TODO: Agregar categoria paquete al html, al formCotizacion, y al objeto cotizacion en paquete
     // TODO: Crear el servicio y mandarlo, luego en el back crear una clase que siga la misma estructura de cotizacion, pero el de arriba
@@ -185,7 +185,17 @@ export class GenerarCotizacionComponent implements OnInit {
     // Se le retornará su cotizacion
     // se debe agregar la anotacion @transactional eso indica que es transaccion nada mas
 
-    console.log(this.formCotizacion.value);
+    /*console.log(this.formCotizacion.value);*/
+    this.cotizacionService.registrarCotizacion(cotizacion).subscribe((response: any)=>{
+      Swal.fire("Registrado", "Felicitaciones, se registró correctamente, en breves será comunicado.", 'success')
+      console.log(response)
+    },
+    (error:any)=>{
+      Swal.fire("Error", "Error, no se generó la cotización.", 'error')
+      console.log(error)
+    });
+
+
 
   }
 
