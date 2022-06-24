@@ -42,7 +42,7 @@ const routes: Routes = [
       { path: 'admin/local', component: CrudLocalComponent, pathMatch: 'full' },
       { path: 'admin/clientes', component: ListaUsuariosComponent, pathMatch: 'full' },
       { path: 'cotizacion', component: GenerarCotizacionComponent, pathMatch: 'full' },
-      { path: 'listEnvio', component: ListaEnviosComponent, pathMatch: 'full'},
+      { path: 'listEnvios', component: ListaEnviosComponent, pathMatch: 'full'},
       { path: 'mis-envios', component: MisEnviosComponent, pathMatch: 'full'},
       { path: '**', component: AdminHomeComponent },
     ],
