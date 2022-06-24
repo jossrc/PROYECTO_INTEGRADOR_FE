@@ -5,12 +5,13 @@ import { Usuario } from 'src/app/models/Usuario';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { EnviosService } from 'src/app/services/envios.service';
 
+
 @Component({
-  selector: 'app-lista-envios',
-  templateUrl: './lista-envios.component.html',
-  styleUrls: ['./lista-envios.component.css']
+  selector: 'app-mis-envios',
+  templateUrl: './mis-envios.component.html',
+  styleUrls: ['./mis-envios.component.css']
 })
-export class ListaEnviosComponent implements OnInit {
+export class MisEnviosComponent implements OnInit {
 
   selIdUsuario:number = 0;
   id: number =0;
@@ -63,8 +64,8 @@ export class ListaEnviosComponent implements OnInit {
     console.log(this.id);
     console.log(this.selIdUsuario);
     
-    this.envioService.consultarId(this.selIdUsuario).subscribe(
-      response => this.listUsuario = response.lista
+    this.envioService.consultarId(1).subscribe(
+      response => this.envios = response.lista
     );
   }
 
@@ -76,5 +77,5 @@ export class ListaEnviosComponent implements OnInit {
       response => this.envios = response
     );
   }
-
+  
 }

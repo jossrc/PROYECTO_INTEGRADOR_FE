@@ -15,6 +15,7 @@ import { CrudCategoriaPaqueteComponent } from './crud-categoria-paquete/crud-cat
 import { CrudVehiculoComponent } from './crud-vehiculo/crud-vehiculo.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GenerarCotizacionComponent } from './generar-cotizacion/generar-cotizacion.component';
+import { MisEnviosComponent } from './mis-envios/mis-envios.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { GenerarCotizacionComponent } from './generar-cotizacion/generar-cotizac
     GuardarCategoriaPaqueteComponent,
     CrudVehiculoComponent,
     GenerarCotizacionComponent,
+    MisEnviosComponent,
   ],
   exports: [AdminHomeComponent],
   imports: [CommonModule, PrimeNgModule, ToolbarModule, ReactiveFormsModule],
