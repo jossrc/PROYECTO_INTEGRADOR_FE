@@ -65,6 +65,38 @@ export class NavigationService {
       type: 'link',
       icon: 'pi pi-home',
     },
+    {
+      name: 'Cotizaciones',
+      type: 'menu',
+      icon: 'pi pi-chart-line',
+      sub: [
+        {
+          name: 'Generar Cotización',
+          state: 'cotizacion',
+          type: 'link',
+          icon: 'pi pi-dollar',
+        },
+        {
+          name: 'Mis Cotizaciones',
+          state: 'mis-cotizaciones',
+          type: 'link',
+          icon: 'pi pi-chart-bar ',
+        },
+      ],
+    },
+    {
+      name: 'Envíos',
+      type: 'menu',
+      icon: 'pi pi-car',
+      sub: [
+        {
+          name: 'Mis Envíos',
+          state: 'mis-envios',
+          type: 'link',
+          icon: 'pi pi-map-marker',
+        }
+      ],
+    }
   ];
   menuAdministrador: IMenuItem[] = [
     {
@@ -115,8 +147,8 @@ export class NavigationService {
           icon: 'pi pi-dollar',
         },
         {
-          name: 'Lista de Cotizaciones',
-          state: 'cotizaciones',
+          name: 'Cotizaciones Todo',
+          state: 'lista-cotizaciones',
           type: 'link',
           icon: 'pi pi-chart-bar ',
         },
@@ -144,13 +176,7 @@ export class NavigationService {
           state: 'mis-envios',
           type: 'link',
           icon: 'pi pi-map-marker',
-        },
-        {
-          name: 'Problemas',
-          state: 'admin/problemas',
-          type: 'link',
-          icon: 'pi pi-flag-fill',
-        },
+        }
       ],
     },
     {
