@@ -147,8 +147,8 @@ export class NavigationService {
           icon: 'pi pi-dollar',
         },
         {
-          name: 'Mis Cotizaciones',
-          state: 'mis-cotizaciones',
+          name: 'Cotizaciones Todo',
+          state: 'lista-cotizaciones',
           type: 'link',
           icon: 'pi pi-chart-bar ',
         },

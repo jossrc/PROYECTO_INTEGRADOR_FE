@@ -5,6 +5,7 @@ import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { CrudEmpleadoComponent } from './pages/crud-empleado/crud-empleado.component';
 import { ListaUsuariosComponent } from './pages/lista-usuarios/lista-usuarios.component';
 import { ListaClientesComponent } from './pages/lista-clientes/lista-clientes.component';
+import { ListaCotizacionesComponent } from './pages/lista-cotizaciones/lista-cotizaciones.component';
 import { CrudCategoriaPaqueteComponent } from './pages/crud-categoria-paquete/crud-categoria-paquete.component';
 import { CrudVehiculoComponent } from './pages/crud-vehiculo/crud-vehiculo.component';
 import { CrudLocalComponent } from './pages/crud-local/crud-local.component';
@@ -46,6 +47,7 @@ const routes: Routes = [
       { path: 'cotizacion', component: GenerarCotizacionComponent, pathMatch: 'full' },
       { path: 'listEnvios', component: ListaEnviosComponent, pathMatch: 'full'},
       { path: 'mis-envios', component: MisEnviosComponent, pathMatch: 'full'},
+      { path: 'lista-cotizaciones', component: ListaCotizacionesComponent, pathMatch: 'full'},
       { path: 'mis-cotizaciones', component: MisCotizacionesComponent, pathMatch: 'full'},
       { path: '**', component: AdminHomeComponent },
     ],

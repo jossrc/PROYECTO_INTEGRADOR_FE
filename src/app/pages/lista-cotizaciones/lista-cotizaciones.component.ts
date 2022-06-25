@@ -5,17 +5,14 @@ import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-mis-cotizaciones',
-  templateUrl: './mis-cotizaciones.component.html',
-  styleUrls: ['./mis-cotizaciones.component.css'],
+  selector: 'app-lista-cotizaciones',
+  templateUrl: './lista-cotizaciones.component.html',
+  styleUrls: ['./lista-cotizaciones.component.css'],
   providers: [ MessageService,ConfirmationService ]
 })
-export class MisCotizacionesComponent implements OnInit {
+export class ListaCotizacionesComponent implements OnInit {
 
-  selectCotizacion = [];
   listaCotizaciones = [];
-
-  ref!: DynamicDialogRef;
 
   constructor(
     private cotizacionService:CotizacionService,
@@ -24,31 +21,31 @@ export class MisCotizacionesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.obtenerCotizaciones()
+    this.obtenerCotizacionesTodo()
   }
 
-  private obtenerCotizaciones() {
-    this.cotizacionService.listarCotizaciones().subscribe( (data: any) => {
+  private obtenerCotizacionesTodo() {
+    this.cotizacionService.listarCotizacionesTodo().subscribe( (data: any) => {
       this.listaCotizaciones = data.datos;
       console.log(data);
     });
   }
 
-  solicitarEnvio(idCotizacion: number) {
+  rechazarCotizacion(idCotizacion: number) {
     console.log(idCotizacion)
     Swal.fire({
-      title: 'Solicitar envio',
-      text: "¿Estás seguro de solicitar el envio?",
-      icon: 'info',
+      title: 'Rechazar envio',
+      text: "¿Estás seguro de rechazar el envio?",
+      icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, solicitar',
-      cancelButtonText: 'No, solicitar'
+      confirmButtonText: 'Sí, rechazar',
+      cancelButtonText: 'No, rechazar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.cotizacionService.solicitarEnvio(idCotizacion).subscribe( (data) => {
-          this.obtenerCotizaciones()
+        this.cotizacionService.rechazarEnvio(idCotizacion).subscribe( (data) => {
+          this.obtenerCotizacionesTodo()
           Swal.fire(
             'Solicitacion efectuada!',
             'La solicitud ha sido enviada',

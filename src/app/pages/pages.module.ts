@@ -18,6 +18,7 @@ import { GenerarCotizacionComponent } from './generar-cotizacion/generar-cotizac
 import { MisEnviosComponent } from './mis-envios/mis-envios.component';
 import { MisCotizacionesComponent } from './mis-cotizaciones/mis-cotizaciones.component';
 import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
+import { ListaCotizacionesComponent } from './lista-cotizaciones/lista-cotizaciones.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ListaClientesComponent } from './lista-clientes/lista-clientes.componen
     MisEnviosComponent,
     MisCotizacionesComponent,
     ListaClientesComponent,
+    ListaCotizacionesComponent,
   ],
   exports: [AdminHomeComponent],
   imports: [CommonModule, PrimeNgModule, ToolbarModule, ReactiveFormsModule],
