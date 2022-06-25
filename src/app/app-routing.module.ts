@@ -13,6 +13,7 @@ import { UsuarioLayoutComponent } from './shared/layout/usuario-layout/usuario-l
 import { ValidarTokenGuard } from './guards/validar-token.guard';
 import { ListaEnviosComponent } from './pages/lista-envios/lista-envios.component';
 import { MisEnviosComponent } from './pages/mis-envios/mis-envios.component';
+import { MisCotizacionesComponent } from './pages/mis-cotizaciones/mis-cotizaciones.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,7 @@ const routes: Routes = [
       { path: 'cotizacion', component: GenerarCotizacionComponent, pathMatch: 'full' },
       { path: 'listEnvios', component: ListaEnviosComponent, pathMatch: 'full'},
       { path: 'mis-envios', component: MisEnviosComponent, pathMatch: 'full'},
+      { path: 'mis-cotizaciones', component: MisCotizacionesComponent, pathMatch: 'full'},
       { path: '**', component: AdminHomeComponent },
     ],
     canLoad: [ValidarTokenGuard],

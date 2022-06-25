@@ -17,6 +17,9 @@ export class CotizacionService {
 
   constructor( private http: HttpClient ) { }
 
+  listarCotizaciones(): Observable<any> {
+    return this.http.get(API_ROUTE + "/listar", { headers: this.headers } )
+  }
 
   registrarCotizacion(datosCotizacion: any):Observable<any>{
     return this.http.post(API_ROUTE+"/registrar", datosCotizacion, {

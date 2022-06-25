@@ -16,6 +16,7 @@ import { CrudVehiculoComponent } from './crud-vehiculo/crud-vehiculo.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GenerarCotizacionComponent } from './generar-cotizacion/generar-cotizacion.component';
 import { MisEnviosComponent } from './mis-envios/mis-envios.component';
+import { MisCotizacionesComponent } from './mis-cotizaciones/mis-cotizaciones.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MisEnviosComponent } from './mis-envios/mis-envios.component';
     CrudVehiculoComponent,
     GenerarCotizacionComponent,
     MisEnviosComponent,
+    MisCotizacionesComponent,
   ],
   exports: [AdminHomeComponent],
   imports: [CommonModule, PrimeNgModule, ToolbarModule, ReactiveFormsModule],
