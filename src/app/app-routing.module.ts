@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { CrudEmpleadoComponent } from './pages/crud-empleado/crud-empleado.component';
 import { ListaUsuariosComponent } from './pages/lista-usuarios/lista-usuarios.component';
+import { ListaClientesComponent } from './pages/lista-clientes/lista-clientes.component';
 import { CrudCategoriaPaqueteComponent } from './pages/crud-categoria-paquete/crud-categoria-paquete.component';
 import { CrudVehiculoComponent } from './pages/crud-vehiculo/crud-vehiculo.component';
 import { CrudLocalComponent } from './pages/crud-local/crud-local.component';
@@ -41,7 +42,7 @@ const routes: Routes = [
       },
       { path: 'admin/vehiculo', component: CrudVehiculoComponent, pathMatch: 'full' },
       { path: 'admin/local', component: CrudLocalComponent, pathMatch: 'full' },
-      { path: 'admin/clientes', component: ListaUsuariosComponent, pathMatch: 'full' },
+      { path: 'admin/clientes', component: ListaClientesComponent, pathMatch: 'full' },
       { path: 'cotizacion', component: GenerarCotizacionComponent, pathMatch: 'full' },
       { path: 'listEnvios', component: ListaEnviosComponent, pathMatch: 'full'},
       { path: 'mis-envios', component: MisEnviosComponent, pathMatch: 'full'},

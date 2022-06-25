@@ -1,0 +1,52 @@
+<p-toast></p-toast>
+<div class="p-5">
+  <div class="col-12">
+    <div class="surface-card shadow-2 border-round p-4">
+      <div class="card">
+        <p-message></p-message>
+
+        <p-table [value]="listaUsuarios" [rows]="10" [paginator]="true"  responsiveLayout="scroll" [rowHover]="true" dataKey="id"
+                 currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} registros" [showCurrentPageReport]="true">
+          <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+              <h5 class="m-0">Listado de Usuarios</h5>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 3rem">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+              </th>
+              <th pSortableColumn="idUsuario">ID <p-sortIcon field="idUsuario"></p-sortIcon></th>
+              <th pSortableColumn="nombre">Nombre <p-sortIcon field="nombre"></p-sortIcon></th>
+              <th pSortableColumn="apellido">Apellido <p-sortIcon field="apellido"></p-sortIcon></th>
+              <th pSortableColumn="email">Correo<p-sortIcon field="email"></p-sortIcon></th>
+              <th pSortableColumn="dni">DNI <p-sortIcon field="dni"></p-sortIcon></th>
+              <th pSortableColumn="direccion">Direccion <p-sortIcon field="direccion"></p-sortIcon></th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-clientes>
+            <tr>
+              <td>
+                <p-tableCheckbox [value]="clientes"></p-tableCheckbox>
+              </td>
+              <td>{{clientes?.idUsuario}}</td>
+              <td>{{clientes?.nombre}}</td>
+              <td>{{clientes?.apellido}}</td>
+              <td>{{clientes?.email}}</td>
+              <td>{{clientes?.dni}}</td>
+              <td>{{clientes?.direccion}}</td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between" style="font-size: .8rem">
+              Hay un total de {{listaUsuarios ? listaUsuarios.length : 0 }} registros.
+            </div>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>
+
