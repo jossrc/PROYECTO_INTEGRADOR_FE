@@ -17,15 +17,7 @@ export class AuthService {
   constructor( private http: HttpClient ) { }
 
   login(loginData: { email: string, password: string }): Observable<AuthResponse> {
-
-    return this.http.post<AuthResponse>(API_ROUTE + '/login', loginData, { headers: this.headers }).pipe(
-      tap((resp: AuthResponse) => {
-        if (resp && resp.token) {
-          localStorage.setItem('postales_role', btoa(resp.user.authorities[0].role))
-          localStorage.setItem('postales_token', resp.token);
-        }
-      }),
-    );
+    return this.http.post<AuthResponse>(API_ROUTE + '/login', loginData, { headers: this.headers });
   }
 
   getToken(): string | null {

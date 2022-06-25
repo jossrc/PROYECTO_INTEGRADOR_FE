@@ -43,6 +43,8 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(login).subscribe( (data) => {
       if (data && data.token) {
+        localStorage.setItem('postales_role', btoa(data.user.authorities[0].role))
+        localStorage.setItem('postales_token', data.token);
         this.navigationService.elegirMenuItems(data.user.authorities[0].role)
         this.router.navigate(['/admin/home'])
       }
