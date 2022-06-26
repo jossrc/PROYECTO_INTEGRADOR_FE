@@ -11,12 +11,12 @@ interface Departamento {
     name: string,
     code: string
   }
-  
+
   interface Provincia {
     name: string,
     code: string
   }
-  
+
   interface Distrito {
     name: string,
     code: number // ubigeoId
@@ -30,17 +30,17 @@ interface Departamento {
 })
 
 export class GuardarLocalComponent implements OnInit {
-  
+
     listaDepartamentos : Departamento[] = [];
     listaProvincias: Provincia[] = [];
     listaDistritos: Distrito[] = [];
-    
+
     idLocal: number = -1;
     deseaActualizar: boolean = false
-  
+
     hayErrores: boolean = false
     mensajeError: string = ''
-  
+
     formLocal: FormGroup = this.formBuilder.group({
       nombre: ['', [Validators.required]],
       hora_inicio: ['', [Validators.required]],
@@ -50,38 +50,42 @@ export class GuardarLocalComponent implements OnInit {
       provincia: ['', [Validators.required]],
       distrito: ['', [Validators.required]], // Ubigeo
     })
-  
+
     constructor( private ubigeoService: UbigeoService,
                  private localService: LocalService,
                  public ref: DynamicDialogRef,
                  private formBuilder: FormBuilder,
                  public messageService: MessageService,
                  public config: DynamicDialogConfig) {
-  
+
       this.listarDepartamentos();
-  
-    }
-  
-    ngOnInit(): void {
-  
-      if (this.config?.data && this.config?.data?.local) {
-        this.atraparLocalParaActualizar(this.config.data.local)
-      }
-  
+
       this.formLocal.get('departamento')?.valueChanges.pipe(
         tap( (_) => {
-          this.formLocal.get('provincia')?.reset('')
-          this.formLocal.get('distrito')?.reset('')
+          this.formLocal.get('provincia')?.reset(
+            null,
+            { emitEvent: false }
+          )
+          this.listaProvincias = []
+          this.formLocal.get('distrito')?.reset(
+            null,
+            { emitEvent: false }
+          )
+          this.listaDistritos = []
         })
       ).subscribe( (departamento: Departamento) => {
         if (departamento) {
+          //console.log('Que departamento soy ? : ', departamento);
           this.listarProvincias(departamento.code)
         }
       })
-  
+
       this.formLocal.get('provincia')?.valueChanges.pipe(
         tap( (_) => {
-          this.formLocal.get('distrito')?.reset('')
+          this.formLocal.get('distrito')?.reset(null,
+            { emitEvent: false }
+            )
+            this.listaDistritos = []
         })
       ).subscribe( (provincia: Provincia) => {
         const departamento: Departamento = this.formLocal.get('departamento')?.value
@@ -89,9 +93,17 @@ export class GuardarLocalComponent implements OnInit {
           this.listarDistritos(departamento.code , provincia.code)
         }
       });
-  
+
     }
-  
+
+    ngOnInit(): void {
+
+      if (this.config?.data && this.config?.data?.local) {
+        this.atraparLocalParaActualizar(this.config.data.local)
+      }
+
+    }
+
     guardarLocal() {
       this.hayErrores = false
       this.mensajeError = ''
@@ -102,7 +114,7 @@ export class GuardarLocalComponent implements OnInit {
         this.mensajeError = 'Verifique que la información sea correcta'
         return;
       }
-  
+
       const data = this.formLocal.value;
 
       const apertura = new Date(new Date(data.hora_inicio).setSeconds(0)).toLocaleTimeString();
@@ -120,7 +132,7 @@ export class GuardarLocalComponent implements OnInit {
           idUbigeo: data.distrito.code,
         }
       }
-  
+
       if (this.idLocal == -1) {
         // Registra
         this.localService.registrarLocales(local).subscribe( (data: any) => {
@@ -148,10 +160,10 @@ export class GuardarLocalComponent implements OnInit {
           }
         })
       }
-  
-  
+
+
     }
-  
+
     private toDateWithOutTimeZone(time:string) {
       let tempTime = time.split(":").map(num=>Number(num));
       let dt = new Date();
@@ -164,8 +176,6 @@ export class GuardarLocalComponent implements OnInit {
     atraparLocalParaActualizar(local: any) {
       this.deseaActualizar = true
       this.idLocal = local.idUsuario
-  
-      
 
       this.formLocal.patchValue({
         nombre: local.nombre,
@@ -189,12 +199,9 @@ export class GuardarLocalComponent implements OnInit {
           code: local.rol?.id
         }
       })
-  
-      this.listarProvincias(local.ubigeo?.provincia)
-      this.listarDistritos(local.ubigeo?.departamento , local.ubigeo?.provincia)
-  
+
     }
-  
+
     listarDepartamentos() {
       this.ubigeoService.listarDepartamentos().subscribe( (departamentos: string[]) => {
         const data = departamentos.map( (departamento) : Departamento=> {
@@ -204,11 +211,9 @@ export class GuardarLocalComponent implements OnInit {
           }
         });
         this.listaDepartamentos = data;
-        this.listaProvincias = [];
-        this.listaDistritos = [];
       })
     }
-  
+
     listarProvincias(departamento: string) {
       this.ubigeoService.listarProvincias(departamento).subscribe( (provincias: string[]) => {
         const data = provincias.map( (provincia) : Provincia => {
@@ -218,10 +223,9 @@ export class GuardarLocalComponent implements OnInit {
           }
         });
         this.listaProvincias = data;
-        this.listaDistritos = [];
       })
     }
-  
+
     listarDistritos(departamento: string, provincia: string) {
       this.ubigeoService.listarDistritos(departamento, provincia).subscribe((ubigeos: Ubigeo[]) => {
         const data = ubigeos.map( (ubigeo: Ubigeo): Distrito => {
@@ -233,17 +237,16 @@ export class GuardarLocalComponent implements OnInit {
         this.listaDistritos = data;
       });
     }
-  
+
     isValidField(field: string) {
       return (
         this.formLocal.controls[field].errors && this.formLocal.controls[field].touched
       );
     }
-  
+
     cerrarAlertError() {
       this.hayErrores = false
       this.mensajeError = ''
     }
-  
+
   }
-  
