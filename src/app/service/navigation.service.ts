@@ -147,8 +147,14 @@ export class NavigationService {
           icon: 'pi pi-dollar',
         },
         {
-          name: 'Cotizaciones Todo',
+          name: 'Lista de cotizaciones',
           state: 'lista-cotizaciones',
+          type: 'link',
+          icon: 'pi pi-chart-bar ',
+        },
+        {
+          name: 'Mis Cotizaciones',
+          state: 'mis-cotizaciones',
           type: 'link',
           icon: 'pi pi-chart-bar ',
         },
