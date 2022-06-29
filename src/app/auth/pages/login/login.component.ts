@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   ) {
 
     if (authService.getToken()) {
-      this.router.navigate(['/admin/home'])
+      this.router.navigate(['../usuario/home'])
     }
 
    }
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('postales_role', btoa(data.user.authorities[0].role))
         localStorage.setItem('postales_token', data.token);
         this.navigationService.elegirMenuItems(data.user.authorities[0].role)
-        this.router.navigate(['/admin/home'])
+        this.router.navigate(['../usuario/home'])
       }
     })
 

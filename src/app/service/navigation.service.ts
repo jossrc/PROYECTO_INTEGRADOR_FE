@@ -61,7 +61,7 @@ export class NavigationService {
   menuUsuario: IMenuItem[] = [
     {
       name: 'Home',
-      state: 'usuario/home',
+      state: '../usuario/home',
       type: 'link',
       icon: 'pi pi-home',
     },
@@ -72,13 +72,13 @@ export class NavigationService {
       sub: [
         {
           name: 'Generar Cotización',
-          state: 'cotizacion',
+          state: '../usuario/cotizacion',
           type: 'link',
           icon: 'pi pi-dollar',
         },
         {
           name: 'Mis Cotizaciones',
-          state: 'mis-cotizaciones',
+          state: '../usuario/mis-cotizaciones',
           type: 'link',
           icon: 'pi pi-chart-bar ',
         },
@@ -91,7 +91,7 @@ export class NavigationService {
       sub: [
         {
           name: 'Mis Envíos',
-          state: 'mis-envios',
+          state: '../usuario/mis-envios',
           type: 'link',
           icon: 'pi pi-map-marker',
         }
@@ -101,37 +101,37 @@ export class NavigationService {
   menuAdministrador: IMenuItem[] = [
     {
       name: 'Home',
-      state: 'admin/home',
+      state: '../usuario/home',
       type: 'link',
       icon: 'pi pi-home',
     },
     {
       name: 'Empleados',
-      state: 'admin/empleados',
+      state: '../admin/empleados',
       type: 'link',
       icon: 'fa-solid fa-users-gear',
     },
     {
       name: 'Clientes',
-      state: 'admin/clientes',
+      state: '../admin/clientes',
       type: 'link',
       icon: 'pi pi-users',
     },
     {
       name: 'Categoría Paquetes',
-      state: 'admin/categoria-paquete',
+      state: '../admin/categoria-paquete',
       type: 'link',
       icon: 'fa-solid fa-box',
     },
     {
       name: 'Vehículos',
-      state: 'admin/vehiculo',
+      state: '../admin/vehiculo',
       type: 'link',
       icon: 'fa-solid fa-car',
     },
     {
       name: 'Locales',
-      state: 'admin/local',
+      state: '../admin/local',
       type: 'link',
       icon: 'fa-solid fa-house',
     },
@@ -142,19 +142,19 @@ export class NavigationService {
       sub: [
         {
           name: 'Generar Cotización',
-          state: 'cotizacion',
+          state: '../usuario/cotizacion',
           type: 'link',
           icon: 'pi pi-dollar',
         },
         {
           name: 'Lista de cotizaciones',
-          state: 'lista-cotizaciones',
+          state: '../admin/lista-cotizaciones',
           type: 'link',
           icon: 'pi pi-chart-bar ',
         },
         {
           name: 'Mis Cotizaciones',
-          state: 'mis-cotizaciones',
+          state: '../usuario/mis-cotizaciones',
           type: 'link',
           icon: 'pi pi-chart-bar ',
         },
@@ -167,19 +167,19 @@ export class NavigationService {
       sub: [
         {
           name: 'Lista de Envíos',
-          state: 'listEnvios',
+          state: '../admin/listEnvios',
           type: 'link',
           icon: 'pi pi-ticket',
         },
         {
           name: 'Estado de Envíos',
-          state: 'admin/estado-envio',
+          state: '../admin/estado-envio',
           type: 'link',
           icon: 'pi pi-map-marker',
         },
         {
           name: 'Mis Envíos',
-          state: 'mis-envios',
+          state: '../usuario/mis-envios',
           type: 'link',
           icon: 'pi pi-map-marker',
         }
@@ -187,7 +187,7 @@ export class NavigationService {
     },
     {
       name: 'Configuraciones',
-      state: 'admin/configuraciones',
+      state: '../admin/configuraciones',
       type: 'link',
       icon: 'pi pi-cog',
     },
