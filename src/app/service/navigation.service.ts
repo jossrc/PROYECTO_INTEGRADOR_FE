@@ -185,12 +185,6 @@ export class NavigationService {
         }
       ],
     },
-    {
-      name: 'Configuraciones',
-      state: 'admin/configuraciones',
-      type: 'link',
-      icon: 'pi pi-cog',
-    },
   ];
   menuEmpleado: IMenuItem[] = [];
 
