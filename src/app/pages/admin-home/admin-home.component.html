@@ -1,214 +1,331 @@
 <div class="min-h-screen flex flex-column">
-    <div class="surface-section p-5">
-        <div class="flex align-items-start flex-column lg:flex-row lg:justify-content-between">
-            <div class="flex align-items-start flex-column md:flex-row">
-                <img src="https://res.cloudinary.com/dfuuywyk9/image/upload/v1621437436/l60Hf_megote.png" class="mr-5 mb-3 lg:mb-0" style="width:90px;height:90px;border-radius: 20px;" />
+  <div class="surface-section p-5">
+    <div
+      class="flex align-items-start flex-column lg:flex-row lg:justify-content-between"
+    >
+      <div class="flex align-items-start flex-column md:flex-row">
+        <img
+          src="https://res.cloudinary.com/dfuuywyk9/image/upload/v1621437436/l60Hf_megote.png"
+          class="mr-5 mb-3 lg:mb-0"
+          style="width: 90px; height: 90px; border-radius: 20px"
+        />
+        <div>
+          <span class="text-900 font-medium text-3xl"
+            >Bienvenido(a) John Doe</span
+          >
+          <i class="pi pi-star text-2xl ml-4 text-yellow-500"></i>
+          <div class="flex align-items-center flex-wrap text-sm">
+            <div class="mr-5 mt-3">
+              <span class="font-medium text-500">Ventas</span>
+              <div class="text-700 mt-2">333</div>
+            </div>
+            <div class="mr-5 mt-3">
+              <span class="font-medium text-500">PROJECTS</span>
+              <div class="text-700 mt-2">26</div>
+            </div>
+            <div class="mr-5 mt-3">
+              <span class="font-medium text-500">COLLECTIONS</span>
+              <div class="text-700 mt-2">17</div>
+            </div>
+            <div class="mt-3">
+              <span class="font-medium text-500">SHOTS</span>
+              <div class="text-700 mt-2">130</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-5 flex flex-column flex-auto">
+    <div class="grid">
+      <div class="col-12 lg:col-6 xl:col-3">
+        <div class="surface-card shadow-2 p-3 border-1 border-50 border-round">
+          <div class="flex justify-content-between mb-3">
+            <div>
+              <span class="block text-500 font-medium mb-3"
+                >Cantidad de paquetes</span
+              >
+              <div class="text-900 font-medium text-xl">152</div>
+            </div>
+            <div
+              class="flex align-items-center justify-content-center bg-blue-100 border-round"
+              style="width: 2.5rem; height: 2.5rem"
+            >
+              <i class="pi pi-shopping-cart text-blue-500 text-xl"></i>
+            </div>
+          </div>
+          <span class="text-green-500 font-medium">24 new </span>
+          <span class="text-500">since last visit</span>
+        </div>
+      </div>
+      <div class="col-12 lg:col-6 xl:col-3">
+        <div class="surface-card shadow-2 p-3 border-1 border-50 border-round">
+          <div class="flex justify-content-between mb-3">
+            <div>
+              <span class="block text-500 font-medium mb-3"
+                >Cantidad de envios</span
+              >
+              <div class="text-900 font-medium text-xl">$2.100</div>
+            </div>
+            <div
+              class="flex align-items-center justify-content-center bg-orange-100 border-round"
+              style="width: 2.5rem; height: 2.5rem"
+            >
+              <i class="pi pi-map-marker text-orange-500 text-xl"></i>
+            </div>
+          </div>
+          <span class="text-green-500 font-medium">%52+ </span>
+          <span class="text-500">since last week</span>
+        </div>
+      </div>
+      <div class="col-12 lg:col-6 xl:col-3">
+        <div class="surface-card shadow-2 p-3 border-1 border-50 border-round">
+          <div class="flex justify-content-between mb-3">
+            <div>
+              <span class="block text-500 font-medium mb-3"
+                >Cantidad de cotizaciones</span
+              >
+              <div class="text-900 font-medium text-xl">28441</div>
+            </div>
+            <div
+              class="flex align-items-center justify-content-center bg-cyan-100 border-round"
+              style="width: 2.5rem; height: 2.5rem"
+            >
+              <i class="pi pi-inbox text-cyan-500 text-xl"></i>
+            </div>
+          </div>
+          <span class="text-green-500 font-medium">520 </span>
+          <span class="text-500">newly registered</span>
+        </div>
+      </div>
+      <div class="col-12 lg:col-6 xl:col-3">
+        <div class="surface-card shadow-2 p-3 border-1 border-50 border-round">
+          <div class="flex justify-content-between mb-3">
+            <div>
+              <span class="block text-500 font-medium mb-3"
+                >Cantidad de usuarios</span
+              >
+              <div class="text-900 font-medium text-xl">152 Unread</div>
+            </div>
+            <div
+              class="flex align-items-center justify-content-center bg-purple-100 border-round"
+              style="width: 2.5rem; height: 2.5rem"
+            >
+              <i class="pi pi-comment text-purple-500 text-xl"></i>
+            </div>
+          </div>
+          <span class="text-green-500 font-medium">85 </span>
+          <span class="text-500">responded</span>
+        </div>
+      </div>
+      <div class="col-12 lg:col-6">
+        <div class="surface-card shadow-2 border-round p-4 h-full">
+          <div class="flex align-items-center justify-content-between mb-3">
+            <div class="text-900 font-medium text-xl">Actividad</div>
+          </div>
+          <ul class="list-none p-0 m-0">
+            <li
+              class="py-3 border-bottom-1 surface-border flex md:align-items-start md:justify-content-between flex-column md:flex-row"
+            >
+              <div class="flex align-items-start mr-0 lg:mr-5">
+                <img
+                  src="https://res.cloudinary.com/dfuuywyk9/image/upload/v1622821263/notfound_gwgndg.png"
+                  class="mr-3 w-3rem h-3rem"
+                  style="border-radius: 20px"
+                />
                 <div>
-                    <span class="text-900 font-medium text-3xl">Bienvenido(a) John Doe</span>
-                    <i class="pi pi-star text-2xl ml-4 text-yellow-500"></i>
-                    <div class="flex align-items-center flex-wrap text-sm">
-                        <div class="mr-5 mt-3">
-                            <span class="font-medium text-500">Ventas</span>
-                            <div class="text-700 mt-2">333</div>
-                        </div>
-                        <div class="mr-5 mt-3">
-                            <span class="font-medium text-500">PROJECTS</span>
-                            <div class="text-700 mt-2">26</div>
-                        </div>
-                        <div class="mr-5 mt-3">
-                            <span class="font-medium text-500">COLLECTIONS</span>
-                            <div class="text-700 mt-2">17</div>
-                        </div>
-                        <div class="mt-3">
-                            <span class="font-medium text-500">SHOTS</span>
-                            <div class="text-700 mt-2">130</div>
-                        </div>
-                    </div>
+                  <span class="text-900 font-medium block mb-2"
+                    >Jane Cooper</span
+                  >
+                  <div class="text-700 mb-2">responded to an issue.</div>
                 </div>
-            </div>
-          
+              </div>
+              <span class="block text-500 font-medium ml-7 md:ml-5 mt-2 md:mt-0"
+                >14 mins ago</span
+              >
+            </li>
+            <li
+              class="py-3 border-bottom-1 surface-border flex md:align-items-start md:justify-content-between flex-column md:flex-row"
+            >
+              <div class="flex align-items-start mr-0 lg:mr-5">
+                <img
+                  src="https://res.cloudinary.com/dfuuywyk9/image/upload/v1622821263/notfound_gwgndg.png"
+                  class="mr-3 w-3rem h-3rem"
+                  style="border-radius: 20px"
+                />
+                <div>
+                  <span class="text-900 font-medium block mb-2"
+                    >Robert Fox</span
+                  >
+                  <div class="text-700">
+                    changed team size from <span class="text-900">5</span> to
+                    <span class="text-900">6</span>.
+                  </div>
+                </div>
+              </div>
+              <span class="block text-500 font-medium ml-7 md:ml-5 mt-2 md:mt-0"
+                >20 mins ago</span
+              >
+            </li>
+            <li
+              class="py-3 border-bottom-1 surface-border flex md:align-items-start md:justify-content-between flex-column md:flex-row"
+            >
+              <div class="flex align-items-start mr-0 lg:mr-5">
+                <img
+                  src="https://res.cloudinary.com/dfuuywyk9/image/upload/v1622821263/notfound_gwgndg.png"
+                  class="mr-3 w-3rem h-3rem"
+                  style="border-radius: 20px"
+                />
+                <div>
+                  <span class="text-900 font-medium block mb-2"
+                    >Kristin Watson Cooper</span
+                  >
+                  <div class="text-700 mb-2">
+                    created a Q4 presentation to an issue.
+                  </div>
+                </div>
+              </div>
+              <span class="block text-500 font-medium ml-7 md:ml-5 mt-2 md:mt-0"
+                >38 mins ago</span
+              >
+            </li>
+            <li
+              class="py-3 border-bottom-1 surface-border flex md:align-items-start md:justify-content-between flex-column md:flex-row"
+            >
+              <div class="flex align-items-start mr-0 lg:mr-5">
+                <img
+                  src="https://res.cloudinary.com/dfuuywyk9/image/upload/v1622821263/notfound_gwgndg.png"
+                  class="mr-3 w-3rem h-3rem"
+                  style="border-radius: 20px"
+                />
+                <div>
+                  <span class="text-900 font-medium block mb-2"
+                    >Annette Black</span
+                  >
+                  <div class="text-700">
+                    added <span class="text-900">Nico Greenberg</span> to
+                    <span class="text-blue-500">Watchlist Tier-1</span>.
+                  </div>
+                </div>
+              </div>
+              <span class="block text-500 font-medium ml-7 md:ml-5 mt-2 md:mt-0"
+                >1 day ago</span
+              >
+            </li>
+            <li
+              class="py-3 flex md:align-items-start md:justify-content-between flex-column md:flex-row"
+            >
+              <div class="flex align-items-start mr-0 lg:mr-5">
+                <img
+                  src="https://res.cloudinary.com/dfuuywyk9/image/upload/v1622821263/notfound_gwgndg.png"
+                  class="mr-3 w-3rem h-3rem"
+                  style="border-radius: 20px"
+                />
+                <div>
+                  <span class="text-900 font-medium block mb-2"
+                    >Floyd Miles</span
+                  >
+                  <div class="text-700">
+                    has refunded a blue t-shirt for
+                    <span class="text-blue-500">79$</span>.
+                  </div>
+                </div>
+              </div>
+              <span class="block text-500 font-medium ml-7 md:ml-5 mt-2 md:mt-0"
+                >4 days ago</span
+              >
+            </li>
+          </ul>
         </div>
-    </div>
-    
-    <div class="p-5 flex flex-column flex-auto">
-        <div class="grid">
-            <div class="col-12 lg:col-6 xl:col-3">
-                <div class="surface-card shadow-2 p-3 border-1 border-50 border-round">
-                    <div class="flex justify-content-between mb-3">
-                        <div>
-                            <span class="block text-500 font-medium mb-3">Cantidad de paquetes</span>
-                            <div class="text-900 font-medium text-xl">152</div>
-                        </div>
-                        <div class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width:2.5rem;height:2.5rem">
-                            <i class="pi pi-shopping-cart text-blue-500 text-xl"></i>
-                        </div>
-                    </div>
-                    <span class="text-green-500 font-medium">24 new </span>
-                    <span class="text-500">since last visit</span>
-                </div>
-            </div>
-            <div class="col-12 lg:col-6 xl:col-3">
-                <div class="surface-card shadow-2 p-3 border-1 border-50 border-round">
-                    <div class="flex justify-content-between mb-3">
-                        <div>
-                            <span class="block text-500 font-medium mb-3">Cantidad de envios</span>
-                            <div class="text-900 font-medium text-xl">$2.100</div>
-                        </div>
-                        <div class="flex align-items-center justify-content-center bg-orange-100 border-round" style="width:2.5rem;height:2.5rem">
-                            <i class="pi pi-map-marker text-orange-500 text-xl"></i>
-                        </div>
-                    </div>
-                    <span class="text-green-500 font-medium">%52+ </span>
-                    <span class="text-500">since last week</span>
-                </div>
-            </div>
-            <div class="col-12 lg:col-6 xl:col-3">
-                <div class="surface-card shadow-2 p-3 border-1 border-50 border-round">
-                    <div class="flex justify-content-between mb-3">
-                        <div>
-                            <span class="block text-500 font-medium mb-3">Cantidad de cotizaciones</span>
-                            <div class="text-900 font-medium text-xl">28441</div>
-                        </div>
-                        <div class="flex align-items-center justify-content-center bg-cyan-100 border-round" style="width:2.5rem;height:2.5rem">
-                            <i class="pi pi-inbox text-cyan-500 text-xl"></i>
-                        </div>
-                    </div>
-                    <span class="text-green-500 font-medium">520  </span>
-                    <span class="text-500">newly registered</span>
-                </div>
-            </div>
-            <div class="col-12 lg:col-6 xl:col-3">
-                <div class="surface-card shadow-2 p-3 border-1 border-50 border-round">
-                    <div class="flex justify-content-between mb-3">
-                        <div>
-                            <span class="block text-500 font-medium mb-3">Cantidad de usuarios</span>
-                            <div class="text-900 font-medium text-xl">152 Unread</div>
-                        </div>
-                        <div class="flex align-items-center justify-content-center bg-purple-100 border-round" style="width:2.5rem;height:2.5rem">
-                            <i class="pi pi-comment text-purple-500 text-xl"></i>
-                        </div>
-                    </div>
-                    <span class="text-green-500 font-medium">85 </span>
-                    <span class="text-500">responded</span>
-                </div>
-            </div>
-            <div class="col-12 lg:col-6">
-                <div class="surface-card shadow-2 border-round p-4 h-full">
-                    <div class="flex align-items-center justify-content-between mb-3">
-                        <div class="text-900 font-medium text-xl">Actividad</div>
-                        
-                    </div>
-                    <ul class="list-none p-0 m-0">
-                        <li class="py-3 border-bottom-1 surface-border flex md:align-items-start md:justify-content-between flex-column md:flex-row">
-                            <div class="flex align-items-start mr-0 lg:mr-5">
-                                <img src="https://res.cloudinary.com/dfuuywyk9/image/upload/v1622821263/notfound_gwgndg.png" class="mr-3 w-3rem h-3rem" style="border-radius: 20px;" />
-                                <div>
-                                    <span class="text-900 font-medium block mb-2">Jane Cooper</span>
-                                    <div class="text-700 mb-2">responded to an issue.</div>
-                                    
-                                </div>
-                            </div>
-                            <span class="block text-500 font-medium ml-7 md:ml-5 mt-2 md:mt-0">14 mins ago</span>
-                        </li>
-                        <li class="py-3 border-bottom-1 surface-border flex md:align-items-start md:justify-content-between flex-column md:flex-row">
-                            <div class="flex align-items-start mr-0 lg:mr-5">
-                                <img src="https://res.cloudinary.com/dfuuywyk9/image/upload/v1622821263/notfound_gwgndg.png" class="mr-3 w-3rem h-3rem" style="border-radius: 20px;"/>
-                                <div>
-                                    <span class="text-900 font-medium block mb-2">Robert Fox</span>
-                                    <div class="text-700">changed team size from <span class="text-900">5</span> to <span class="text-900">6</span>.</div>
-                                </div>
-                            </div>
-                            <span class="block text-500 font-medium ml-7 md:ml-5 mt-2 md:mt-0">20 mins ago</span>
-                        </li>
-                        <li class="py-3 border-bottom-1 surface-border flex md:align-items-start md:justify-content-between flex-column md:flex-row">
-                            <div class="flex align-items-start mr-0 lg:mr-5">
-                                <img src="https://res.cloudinary.com/dfuuywyk9/image/upload/v1622821263/notfound_gwgndg.png" class="mr-3 w-3rem h-3rem" style="border-radius: 20px;"/>
-                                <div>
-                                    <span class="text-900 font-medium block mb-2">Kristin Watson Cooper</span>
-                                    <div class="text-700 mb-2">created a Q4 presentation to an issue.</div>
-                                   
-                                </div>
-                            </div>
-                            <span class="block text-500 font-medium ml-7 md:ml-5 mt-2 md:mt-0">38 mins ago</span>
-                        </li>
-                        <li class="py-3 border-bottom-1 surface-border flex md:align-items-start md:justify-content-between flex-column md:flex-row">
-                            <div class="flex align-items-start mr-0 lg:mr-5">
-                                <img src="https://res.cloudinary.com/dfuuywyk9/image/upload/v1622821263/notfound_gwgndg.png" class="mr-3 w-3rem h-3rem" style="border-radius: 20px;"/>
-                                <div>
-                                    <span class="text-900 font-medium block mb-2">Annette Black</span>
-                                    <div class="text-700">added <span class="text-900">Nico Greenberg</span> to <span class="text-blue-500">Watchlist Tier-1</span>.</div>
-                                </div>
-                            </div>
-                            <span class="block text-500 font-medium ml-7 md:ml-5 mt-2 md:mt-0">1 day ago</span>
-                        </li>
-                        <li class="py-3 flex md:align-items-start md:justify-content-between flex-column md:flex-row">
-                            <div class="flex align-items-start mr-0 lg:mr-5">
-                                <img src="https://res.cloudinary.com/dfuuywyk9/image/upload/v1622821263/notfound_gwgndg.png" class="mr-3 w-3rem h-3rem" style="border-radius: 20px;"/>
-                                <div>
-                                    <span class="text-900 font-medium block mb-2">Floyd Miles</span>
-                                    <div class="text-700">has refunded a blue t-shirt for <span class="text-blue-500">79$</span>.</div>
-                                </div>
-                            </div>
-                            <span class="block text-500 font-medium ml-7 md:ml-5 mt-2 md:mt-0">4 days ago</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-12 lg:col-6">
-                <div class="surface-card shadow-2 border-round p-4 h-full">
-                    <div class="flex align-items-center justify-content-between mb-4">
-                        <div class="text-900 font-medium text-xl">Notificaciones</div>
-                        
-                    </div>
-                    
-                    <span class="block text-600 font-medium mb-3">Hoy</span>
-                    <ul class="p-0 mx-0 mt-0 mb-4 list-none">
-                        <li class="flex align-items-center py-2 border-bottom-1 surface-border">
-                            <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0">
-                                <i class="pi pi-dollar text-xl text-blue-500"></i>
-                            </div>
-                            <span class="text-900 line-height-3">Richard Jones
-                                <span class="text-700">has purchased a blue t-shirt for <span class="text-blue-500">79$</span></span>
-                            </span>
-                        </li>
-                        <li class="flex align-items-center py-2">
-                            <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-orange-100 border-circle mr-3 flex-shrink-0">
-                                <i class="pi pi-download text-xl text-orange-500"></i>
-                            </div>
-                            <span class="text-700 line-height-3">Your request for withdrawal of <span class="text-blue-500 font-medium">2500$</span> has been initiated.</span>
-                        </li>
-                    </ul>
-            
-                    <span class="block text-600 font-medium mb-3">Ayer</span>
-                    <ul class="p-0 m-0 list-none">
-                        <li class="flex align-items-center py-2 border-bottom-1 surface-border">
-                            <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0">
-                                <i class="pi pi-dollar text-xl text-blue-500"></i>
-                            </div>
-                            <span class="text-900 line-height-3">Keyser Wick
-                                <span class="text-700">has purchased a black jacket for <span class="text-blue-500">59$</span></span>
-                            </span>
-                        </li>
-                        <li class="flex align-items-center py-2 border-bottom-1 surface-border">
-                            <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-pink-100 border-circle mr-3 flex-shrink-0">
-                                <i class="pi pi-question text-xl text-pink-500"></i>
-                            </div>
-                            <span class="text-900 line-height-3">Jane Davis
-                                <span class="text-700">has posted a new questions about your product.</span>
-                            </span>
-                        </li>
-                        <li class="flex align-items-center py-2">
-                            <div class="w-3rem h-3rem flex align-items-center justify-content-center bg-green-100 border-circle mr-3 flex-shrink-0">
-                                <i class="pi pi-arrow-up text-xl text-green-500"></i>
-                            </div>
-                            <span class="text-900 line-height-3">Claire Smith
-                                <span class="text-700">has upvoted your store along with a comment.</span>
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
+      </div>
+      <div class="col-12 lg:col-6">
+        <div class="surface-card shadow-2 border-round p-4 h-full">
+          <div class="flex align-items-center justify-content-between mb-4">
+            <div class="text-900 font-medium text-xl">Notificaciones</div>
+          </div>
+
+          <span class="block text-600 font-medium mb-3">Hoy</span>
+          <ul class="p-0 mx-0 mt-0 mb-4 list-none">
+            <li
+              class="flex align-items-center py-2 border-bottom-1 surface-border"
+            >
+              <div
+                class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0"
+              >
+                <i class="pi pi-dollar text-xl text-blue-500"></i>
+              </div>
+              <span class="text-900 line-height-3"
+                >Richard Jones
+                <span class="text-700"
+                  >has purchased a blue t-shirt for
+                  <span class="text-blue-500">79$</span></span
+                >
+              </span>
+            </li>
+            <li class="flex align-items-center py-2">
+              <div
+                class="w-3rem h-3rem flex align-items-center justify-content-center bg-orange-100 border-circle mr-3 flex-shrink-0"
+              >
+                <i class="pi pi-download text-xl text-orange-500"></i>
+              </div>
+              <span class="text-700 line-height-3"
+                >Your request for withdrawal of
+                <span class="text-blue-500 font-medium">2500$</span> has been
+                initiated.</span
+              >
+            </li>
+          </ul>
+
+          <span class="block text-600 font-medium mb-3">Ayer</span>
+          <ul class="p-0 m-0 list-none">
+            <li
+              class="flex align-items-center py-2 border-bottom-1 surface-border"
+            >
+              <div
+                class="w-3rem h-3rem flex align-items-center justify-content-center bg-blue-100 border-circle mr-3 flex-shrink-0"
+              >
+                <i class="pi pi-dollar text-xl text-blue-500"></i>
+              </div>
+              <span class="text-900 line-height-3"
+                >Keyser Wick
+                <span class="text-700"
+                  >has purchased a black jacket for
+                  <span class="text-blue-500">59$</span></span
+                >
+              </span>
+            </li>
+            <li
+              class="flex align-items-center py-2 border-bottom-1 surface-border"
+            >
+              <div
+                class="w-3rem h-3rem flex align-items-center justify-content-center bg-pink-100 border-circle mr-3 flex-shrink-0"
+              >
+                <i class="pi pi-question text-xl text-pink-500"></i>
+              </div>
+              <span class="text-900 line-height-3"
+                >Jane Davis
+                <span class="text-700"
+                  >has posted a new questions about your product.</span
+                >
+              </span>
+            </li>
+            <li class="flex align-items-center py-2">
+              <div
+                class="w-3rem h-3rem flex align-items-center justify-content-center bg-green-100 border-circle mr-3 flex-shrink-0"
+              >
+                <i class="pi pi-arrow-up text-xl text-green-500"></i>
+              </div>
+              <span class="text-900 line-height-3"
+                >Claire Smith
+                <span class="text-700"
+                  >has upvoted your store along with a comment.</span
+                >
+              </span>
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
+  </div>
 </div>
