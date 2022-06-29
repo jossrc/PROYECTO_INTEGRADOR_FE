@@ -61,7 +61,7 @@ export class NavigationService {
   menuUsuario: IMenuItem[] = [
     {
       name: 'Home',
-      state: 'usuario/home',
+      state: '../usuario/home',
       type: 'link',
       icon: 'pi pi-home',
     },
@@ -72,13 +72,13 @@ export class NavigationService {
       sub: [
         {
           name: 'Generar Cotización',
-          state: 'cotizacion',
+          state: '../usuario/cotizacion',
           type: 'link',
           icon: 'pi pi-dollar',
         },
         {
           name: 'Mis Cotizaciones',
-          state: 'mis-cotizaciones',
+          state: '../usuario/mis-cotizaciones',
           type: 'link',
           icon: 'pi pi-chart-bar ',
         },
@@ -91,49 +91,20 @@ export class NavigationService {
       sub: [
         {
           name: 'Mis Envíos',
-          state: 'mis-envios',
+          state: '../usuario/mis-envios',
           type: 'link',
           icon: 'pi pi-map-marker',
         }
       ],
     }
   ];
-  menuAdministrador: IMenuItem[] = [
+
+  menuOperador: IMenuItem[] = [
     {
       name: 'Home',
-      state: 'admin/home',
+      state: '../usuario/home',
       type: 'link',
       icon: 'pi pi-home',
-    },
-    {
-      name: 'Empleados',
-      state: 'admin/empleados',
-      type: 'link',
-      icon: 'fa-solid fa-users-gear',
-    },
-    {
-      name: 'Clientes',
-      state: 'admin/clientes',
-      type: 'link',
-      icon: 'pi pi-users',
-    },
-    {
-      name: 'Categoría Paquetes',
-      state: 'admin/categoria-paquete',
-      type: 'link',
-      icon: 'fa-solid fa-box',
-    },
-    {
-      name: 'Vehículos',
-      state: 'admin/vehiculo',
-      type: 'link',
-      icon: 'fa-solid fa-car',
-    },
-    {
-      name: 'Locales',
-      state: 'admin/local',
-      type: 'link',
-      icon: 'fa-solid fa-house',
     },
     {
       name: 'Cotizaciones',
@@ -142,19 +113,19 @@ export class NavigationService {
       sub: [
         {
           name: 'Generar Cotización',
-          state: 'cotizacion',
+          state: '../usuario/cotizacion',
           type: 'link',
           icon: 'pi pi-dollar',
         },
         {
           name: 'Lista de cotizaciones',
-          state: 'lista-cotizaciones',
+          state: '../admin/lista-cotizaciones',
           type: 'link',
           icon: 'pi pi-chart-bar ',
         },
         {
           name: 'Mis Cotizaciones',
-          state: 'mis-cotizaciones',
+          state: '../usuario/mis-cotizaciones',
           type: 'link',
           icon: 'pi pi-chart-bar ',
         },
@@ -167,19 +138,114 @@ export class NavigationService {
       sub: [
         {
           name: 'Lista de Envíos',
-          state: 'listEnvios',
+          state: '../admin/listEnvios',
           type: 'link',
           icon: 'pi pi-ticket',
         },
         {
           name: 'Estado de Envíos',
-          state: 'admin/estado-envio',
+          state: '../admin/estado-envio',
           type: 'link',
           icon: 'pi pi-map-marker',
         },
         {
           name: 'Mis Envíos',
-          state: 'mis-envios',
+          state: '../usuario/mis-envios',
+          type: 'link',
+          icon: 'pi pi-map-marker',
+        }
+      ],
+    },
+    {
+      name: 'Configuraciones',
+      state: '../admin/configuraciones',
+      type: 'link',
+      icon: 'pi pi-cog',
+    },
+  ]
+
+  menuAdministrador: IMenuItem[] = [
+    {
+      name: 'Home',
+      state: '../usuario/home',
+      type: 'link',
+      icon: 'pi pi-home',
+    },
+    {
+      name: 'Empleados',
+      state: '../admin/empleados',
+      type: 'link',
+      icon: 'fa-solid fa-users-gear',
+    },
+    {
+      name: 'Clientes',
+      state: '../admin/clientes',
+      type: 'link',
+      icon: 'pi pi-users',
+    },
+    {
+      name: 'Categoría Paquetes',
+      state: '../admin/categoria-paquete',
+      type: 'link',
+      icon: 'fa-solid fa-box',
+    },
+    {
+      name: 'Vehículos',
+      state: '../admin/vehiculo',
+      type: 'link',
+      icon: 'fa-solid fa-car',
+    },
+    {
+      name: 'Locales',
+      state: '../admin/local',
+      type: 'link',
+      icon: 'fa-solid fa-house',
+    },
+    {
+      name: 'Cotizaciones',
+      type: 'menu',
+      icon: 'pi pi-chart-line',
+      sub: [
+        {
+          name: 'Generar Cotización',
+          state: '../usuario/cotizacion',
+          type: 'link',
+          icon: 'pi pi-dollar',
+        },
+        {
+          name: 'Lista de cotizaciones',
+          state: '../admin/lista-cotizaciones',
+          type: 'link',
+          icon: 'pi pi-chart-bar ',
+        },
+        {
+          name: 'Mis Cotizaciones',
+          state: '../usuario/mis-cotizaciones',
+          type: 'link',
+          icon: 'pi pi-chart-bar ',
+        },
+      ],
+    },
+    {
+      name: 'Envíos',
+      type: 'menu',
+      icon: 'pi pi-car',
+      sub: [
+        {
+          name: 'Lista de Envíos',
+          state: '../admin/listEnvios',
+          type: 'link',
+          icon: 'pi pi-ticket',
+        },
+        {
+          name: 'Estado de Envíos',
+          state: '../admin/estado-envio',
+          type: 'link',
+          icon: 'pi pi-map-marker',
+        },
+        {
+          name: 'Mis Envíos',
+          state: '../usuario/mis-envios',
           type: 'link',
           icon: 'pi pi-map-marker',
         }
@@ -201,7 +267,7 @@ export class NavigationService {
         this.menuItems.next(this.menuAdministrador);
         break;
       case 'ROLE_OPERADOR':
-        this.menuItems.next(this.menuAdministrador);
+        this.menuItems.next(this.menuOperador);
         break;
       case 'ROLE_CLIENTE':
         this.menuItems.next(this.menuUsuario);

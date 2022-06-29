@@ -17,7 +17,16 @@
         <label for="password" class="block text-900 font-medium mb-2">Contraseña</label>
         <input formControlName="password" id="password" type="password" pInputText class="w-full mb-3">
 
-        <button pButton pRipple label="Iniciar Sesión" icon="pi pi-user" class="w-full"></button>
+        <!-- <button pButton pRipple label="Iniciar Sesión" icon="pi pi-user" class="w-full"> -->
+          <!-- <div class="lds-ring" ><div></div><div></div><div></div><div></div></div> -->
+        <!-- </button> -->
+
+        <button class="p-button w-full p-ripple p-component">
+          <span *ngIf="!loading" class="p-button-icon p-button-icon-left pi pi-user" aria-hidden="true"></span>
+          <div *ngIf="loading" class="lds-ring" ><div></div><div></div><div></div><div></div></div>
+          <span class="p-button-label">{{ btnMensaje }}</span>
+        </button>
+
     </div>
     </form>
 
