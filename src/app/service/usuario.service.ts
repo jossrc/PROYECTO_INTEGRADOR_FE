@@ -3,32 +3,30 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-const API_ROUTE = environment.API_ENDPOINT + "/usuarios/cliente";
-let token = "Bearer " + environment.TOKEN_TEST
+const API_ROUTE = environment.API_ENDPOINT + '/usuarios/cliente';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsuarioService {
+  constructor(private http: HttpClient) {}
 
-  // private headers = new HttpHeaders()
-  //   .set("Content-Type", "application/json")
-  //   .set("Authorization", token)
+  private getHeaders(): HttpHeaders {
+    let token =
+      'Bearer ' + localStorage.getItem('postales_token') ||
+      environment.TOKEN_TEST;
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', token);
 
-  constructor( private http: HttpClient ) { }
+    return headers;
+  }
 
   listarClientes(): Observable<any> {
-    token = "Bearer " + localStorage.getItem('postales_token')
-    const headers = new HttpHeaders()
-      .set("Content-Type", "application/json")
-      .set("Authorization", token)
-
-
-    return this.http.get(API_ROUTE + "/listar", { headers } )
+    return this.http.get(API_ROUTE + '/listar', { headers: this.getHeaders() });
   }
 
   registrarCliente(cliente: any): Observable<any> {
-    return this.http.post(API_ROUTE + "/registrar", cliente)
+    return this.http.post(API_ROUTE + '/registrar', cliente);
   }
-
 }

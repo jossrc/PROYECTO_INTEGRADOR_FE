@@ -4,35 +4,34 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Envio } from '../models/Envio';
 
-
- const baseURL = "http://localhost:8090/api/envios"
- const token = "Bearer " + localStorage.getItem('postales_token') || environment.TOKEN_TEST
+const baseURL = environment.API_ENDPOINT + '/envios';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EnviosService {
+  constructor(private http: HttpClient) {}
 
-  private headers = new HttpHeaders()
-    .set("Content-type", "application/json")
-    .set("Authorization", token)
+  private getHeaders(): HttpHeaders {
+    let token =
+      'Bearer ' + localStorage.getItem('postales_token') ||
+      environment.TOKEN_TEST;
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', token);
 
-  constructor(private http:HttpClient) { }
-
-  
-  consultarId(usuario:number): Observable<any> {
-
-     
-
-    return this.http.get(baseURL + "/listaEnviosUsu/" + usuario, { headers: this.headers});
-
+    return headers;
   }
 
+  consultarId(usuario: number): Observable<any> {
+    return this.http.get(baseURL + '/listaEnviosUsu/' + usuario, {
+      headers: this.getHeaders(),
+    });
+  }
 
- consultar(): Observable<Envio[]>{
-   
-    return this.http.get<Envio[]>(baseURL + "/listaEnvios", { headers: this.headers })
-
- }
-
+  consultar(): Observable<Envio[]> {
+    return this.http.get<Envio[]>(baseURL + '/listaEnvios', {
+      headers: this.getHeaders(),
+    });
+  }
 }

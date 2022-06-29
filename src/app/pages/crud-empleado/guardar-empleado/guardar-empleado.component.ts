@@ -81,28 +81,32 @@ export class GuardarEmpleadoComponent implements OnInit {
     this.listarLocales();
     this.listarRoles();
 
-  }
-
-  ngOnInit(): void {
-
-    if (this.config?.data && this.config?.data?.empleado) {
-      this.atraparEmpleadoParaActualizar(this.config.data.empleado)
-    }
-
     this.formEmpleado.get('departamento')?.valueChanges.pipe(
       tap( (_) => {
-        this.formEmpleado.get('provincia')?.reset('')
-        this.formEmpleado.get('distrito')?.reset('')
+        this.formEmpleado.get('provincia')?.reset(
+          null,
+          { emitEvent: false }
+        )
+        this.listaProvincias = []
+        this.formEmpleado.get('distrito')?.reset(
+          null,
+          { emitEvent: false }
+        )
+        this.listaDistritos = []
       })
     ).subscribe( (departamento: Departamento) => {
       if (departamento) {
+        //console.log('Que departamento soy ? : ', departamento);
         this.listarProvincias(departamento.code)
       }
     })
 
     this.formEmpleado.get('provincia')?.valueChanges.pipe(
       tap( (_) => {
-        this.formEmpleado.get('distrito')?.reset('')
+        this.formEmpleado.get('distrito')?.reset(null,
+          { emitEvent: false }
+          )
+          this.listaDistritos = []
       })
     ).subscribe( (provincia: Provincia) => {
       const departamento: Departamento = this.formEmpleado.get('departamento')?.value
@@ -113,8 +117,17 @@ export class GuardarEmpleadoComponent implements OnInit {
 
   }
 
+  ngOnInit(): void {
+
+    if (this.config?.data && this.config?.data?.empleado) {
+      this.atraparEmpleadoParaActualizar(this.config.data.empleado)
+    }
+
+  }
+
   guardarEmpleado() {
     this.hayErrores = false
+    //console.log('Formulario : ', this.formEmpleado.value);
     this.mensajeError = ''
     if (this.formEmpleado.invalid) {
       this.formEmpleado.markAllAsTouched()
@@ -170,7 +183,6 @@ export class GuardarEmpleadoComponent implements OnInit {
       })
     }
 
-
   }
 
   atraparEmpleadoParaActualizar(empleado: any) {
@@ -202,9 +214,6 @@ export class GuardarEmpleadoComponent implements OnInit {
       }
     })
 
-    this.listarProvincias(empleado.ubigeo?.provincia)
-    this.listarDistritos(empleado.ubigeo?.departamento , empleado.ubigeo?.provincia)
-
     // Limpiamos el validador para la contraseña
     this.formEmpleado.get('password')?.clearValidators();
     this.formEmpleado.get('password')?.updateValueAndValidity();
@@ -220,8 +229,6 @@ export class GuardarEmpleadoComponent implements OnInit {
         }
       });
       this.listaDepartamentos = data;
-      this.listaProvincias = [];
-      this.listaDistritos = [];
     })
   }
 
@@ -235,7 +242,6 @@ export class GuardarEmpleadoComponent implements OnInit {
           }
         })
         this.listaLocales = data;
-     
       }
     });
   }
@@ -261,11 +267,11 @@ export class GuardarEmpleadoComponent implements OnInit {
         }
       });
       this.listaProvincias = data;
-      this.listaDistritos = [];
     })
   }
 
   listarDistritos(departamento: string, provincia: string) {
+    //console.log('Departamento - Provincia : ', departamento , provincia);
     this.ubigeoService.listarDistritos(departamento, provincia).subscribe((ubigeos: Ubigeo[]) => {
       const data = ubigeos.map( (ubigeo: Ubigeo): Distrito => {
         return {
