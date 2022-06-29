@@ -143,25 +143,13 @@ export class NavigationService {
           icon: 'pi pi-ticket',
         },
         {
-          name: 'Estado de Envíos',
-          state: '../admin/estado-envio',
-          type: 'link',
-          icon: 'pi pi-map-marker',
-        },
-        {
           name: 'Mis Envíos',
           state: '../usuario/mis-envios',
           type: 'link',
           icon: 'pi pi-map-marker',
         }
       ],
-    },
-    {
-      name: 'Configuraciones',
-      state: '../admin/configuraciones',
-      type: 'link',
-      icon: 'pi pi-cog',
-    },
+    }
   ]
 
   menuAdministrador: IMenuItem[] = [
@@ -236,12 +224,6 @@ export class NavigationService {
           state: '../admin/listEnvios',
           type: 'link',
           icon: 'pi pi-ticket',
-        },
-        {
-          name: 'Estado de Envíos',
-          state: '../admin/estado-envio',
-          type: 'link',
-          icon: 'pi pi-map-marker',
         },
         {
           name: 'Mis Envíos',

@@ -3,6 +3,7 @@ import {ConfirmationService, MessageService} from "primeng/api";
 import {CotizacionService} from "../../service/cotizacion.service";
 import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
 import Swal from 'sweetalert2';
+import { GenerarEnvioComponent } from './generar-envio/generar-envio.component';
 
 @Component({
   selector: 'app-lista-cotizaciones',
@@ -56,5 +57,31 @@ export class ListaCotizacionesComponent implements OnInit {
       }
     })
   }
+
+  abrirModal(cotizacion : any){
+    const modal = this.dialogService.open( GenerarEnvioComponent, {
+      header: "Generar Envio",
+      width: '50%',
+      contentStyle: {"height": "500px", "overflow": "auto"},
+      baseZIndex: 10000,
+      dismissableMask: true,
+      style: {
+        'align-self': 'flex-start',
+        'margin-top': '4rem'
+      },
+      data: {
+        cotizacion
+      }
+  });
+  
+  modal.onClose.subscribe( (data: any) => {
+    console.log('Hay data? ', data)
+    if (data) {
+      this.messageService.add({severity:'info', detail: data.mensaje, summary: 'Envio generado'});
+      this.obtenerCotizacionesTodo();
+    }
+  });
+
+}
 
 }

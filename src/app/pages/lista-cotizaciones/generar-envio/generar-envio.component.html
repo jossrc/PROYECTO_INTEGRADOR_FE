@@ -1,1 +1,41 @@
-<p>generar-envio works!</p>
+<form [formGroup]="formEnvio" autocomplete="false" (ngSubmit)="generarEnvio()" >
+    <div class="grid formgrid p-fluid">
+      <div class="field mb-4 col-12 md:col-6">
+        <label for="fecha_inicio" class="font-medium text-900">Fecha Inicio</label>
+        <p-calendar id="fecha_inicio" formControlName="fecha_inicio" [class]=" isValidField('fecha_inicio') ? 'ng-invalid ng-dirty' : '' "></p-calendar>
+        <small *ngIf="isValidField('fecha_inicio')"  class="p-error block">No puede estar vacío</small>
+      </div>
+      <div class="field mb-4 col-12 md:col-6">
+        <label for="fecha_entrega" class="font-medium text-900">Fecha Entrega</label>
+        <p-calendar id="fecha_entrega" formControlName="fecha_entrega" [class]=" isValidField('fecha_entrega') ? 'ng-invalid ng-dirty' : '' "></p-calendar>
+        <small *ngIf="isValidField('fecha_entrega')" class="p-error block">No puede estar vacío</small>
+      </div>  
+      <div class="field mb-4 col-12 md:col-4">
+        <label class="font-medium text-900">Vehiculos</label>
+        <p-dropdown [options]="listaVehiculos"  formControlName="vehiculo" [class]=" isValidField('vehiculo') ? 'ng-invalid ng-dirty' : '' " placeholder="Seleccione vehiculo" optionLabel="name" [showClear]="true"></p-dropdown>
+        <small *ngIf="isValidField('vehiculo')" class="p-error block">No puede estar vacío</small>
+      </div>
+  
+      <div class="surface-border border-top-1 opacity-50 mb-3 col-12"></div>
+  
+      <div *ngIf="hayErrores" class="col-12">
+        <div class="flex align-items-start p-4 bg-pink-100 border-round border-1 border-pink-300">
+          <i class="pi pi-times-circle text-pink-900 text-2xl mr-3"></i>
+          <div class="mr-3 flex lg:align-items-start flex-column lg:flex-row">
+            <div class="text-pink-900 font-medium mr-0 lg:mr-2 mb-2 lg:mb-0 line-height-3">ERROR: </div>
+            <p class="m-0 p-0 text-pink-700 line-height-3"> {{ mensajeError }} </p>
+          </div>
+          <div class="ml-auto">
+            <a pRipple (click)="cerrarAlertError()" class="inline-flex align-items-center justify-content-center ml-auto border-circle hover:bg-pink-50 no-underline cursor-pointer transition-colors transition-duration-150" style="width:1.5rem;height:1.5rem">
+              <i class="pi pi-times text-pink-900"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-12">
+        <button pButton pRipple label="Generar Envio" class="w-auto mt-3"></button>
+      </div>
+    </div>
+  </form>
+  

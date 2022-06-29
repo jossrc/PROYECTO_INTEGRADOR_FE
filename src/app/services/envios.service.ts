@@ -34,4 +34,10 @@ export class EnviosService {
       headers: this.getHeaders(),
     });
   }
+
+  generarEnvio(envio: any): Observable<any> {
+    return this.http.post(baseURL + '/registrar', envio, {
+      headers: this.getHeaders(),
+    });
+  }
 }
