@@ -8,7 +8,7 @@
             <button (click)="mostrarModalLocalRegistrar()" pButton pRipple label="Registrar" icon="pi pi-plus" class="p-button-success mr-2"></button>
           </ng-template>
         </p-toolbar>
- 
+
         <p-message></p-message>
 
         <p-table [value]="listaLocales" [rows]="10" [paginator]="true"  responsiveLayout="scroll"
@@ -25,9 +25,10 @@
                 <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
               </th>
               <th pSortableColumn="nombre">Nombre <p-sortIcon field="nombre"></p-sortIcon></th>
-              <th pSortableColumn="hora_inicio">Apertura <p-sortIcon field="descripcion"></p-sortIcon></th>
-              <th pSortableColumn="hora_fin">Cierre <p-sortIcon field="estado"></p-sortIcon></th>
-              <th pSortableColumn="direccion">Direccion <p-sortIcon field="estado"></p-sortIcon></th>
+              <th pSortableColumn="hora_inicio">Apertura <p-sortIcon field="hora_inicio"></p-sortIcon></th>
+              <th pSortableColumn="hora_fin">Cierre <p-sortIcon field="hora_fin"></p-sortIcon></th>
+              <th pSortableColumn="direccion">Direccion <p-sortIcon field="direccion"></p-sortIcon></th>
+              <th pSortableColumn="estado">Estado <p-sortIcon field="estado"></p-sortIcon></th>
               <th></th>
             </tr>
           </ng-template>
