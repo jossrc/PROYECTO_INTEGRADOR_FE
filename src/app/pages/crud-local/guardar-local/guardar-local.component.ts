@@ -175,7 +175,7 @@ export class GuardarLocalComponent implements OnInit {
 
     atraparLocalParaActualizar(local: any) {
       this.deseaActualizar = true
-      this.idLocal = local.idUsuario
+      this.idLocal = local.idLocal
 
       this.formLocal.patchValue({
         nombre: local.nombre,
