@@ -98,6 +98,72 @@ export class NavigationService {
       ],
     }
   ];
+
+  menuOperador: IMenuItem[] = [
+    {
+      name: 'Home',
+      state: '../usuario/home',
+      type: 'link',
+      icon: 'pi pi-home',
+    },
+    {
+      name: 'Cotizaciones',
+      type: 'menu',
+      icon: 'pi pi-chart-line',
+      sub: [
+        {
+          name: 'Generar Cotización',
+          state: '../usuario/cotizacion',
+          type: 'link',
+          icon: 'pi pi-dollar',
+        },
+        {
+          name: 'Lista de cotizaciones',
+          state: '../admin/lista-cotizaciones',
+          type: 'link',
+          icon: 'pi pi-chart-bar ',
+        },
+        {
+          name: 'Mis Cotizaciones',
+          state: '../usuario/mis-cotizaciones',
+          type: 'link',
+          icon: 'pi pi-chart-bar ',
+        },
+      ],
+    },
+    {
+      name: 'Envíos',
+      type: 'menu',
+      icon: 'pi pi-car',
+      sub: [
+        {
+          name: 'Lista de Envíos',
+          state: '../admin/listEnvios',
+          type: 'link',
+          icon: 'pi pi-ticket',
+        },
+        {
+          name: 'Estado de Envíos',
+          state: '../admin/estado-envio',
+          type: 'link',
+          icon: 'pi pi-map-marker',
+        },
+        {
+          name: 'Mis Envíos',
+          state: '../usuario/mis-envios',
+          type: 'link',
+          icon: 'pi pi-map-marker',
+        }
+      ],
+    },
+    {
+      name: 'Configuraciones',
+      state: '../admin/configuraciones',
+      type: 'link',
+      icon: 'pi pi-cog',
+    },
+  ]
+
   menuAdministrador: IMenuItem[] = [
     {
       name: 'Home',
@@ -207,7 +273,7 @@ export class NavigationService {
         this.menuItems.next(this.menuAdministrador);
         break;
       case 'ROLE_OPERADOR':
-        this.menuItems.next(this.menuAdministrador);
+        this.menuItems.next(this.menuOperador);
         break;
       case 'ROLE_CLIENTE':
         this.menuItems.next(this.menuUsuario);
