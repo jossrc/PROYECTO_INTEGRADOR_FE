@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { CrudEmpleadoComponent } from './pages/crud-empleado/crud-empleado.component';
 import { ListaUsuariosComponent } from './pages/lista-usuarios/lista-usuarios.component';
+import { ListaClientesComponent } from './pages/lista-clientes/lista-clientes.component';
+import { ListaCotizacionesComponent } from './pages/lista-cotizaciones/lista-cotizaciones.component';
 import { CrudCategoriaPaqueteComponent } from './pages/crud-categoria-paquete/crud-categoria-paquete.component';
 import { CrudVehiculoComponent } from './pages/crud-vehiculo/crud-vehiculo.component';
 import { CrudLocalComponent } from './pages/crud-local/crud-local.component';
@@ -12,6 +14,8 @@ import { AuthLayoutComponent } from './shared/layout/auth-layout/auth-layout.com
 import { UsuarioLayoutComponent } from './shared/layout/usuario-layout/usuario-layout.component';
 import { ValidarTokenGuard } from './guards/validar-token.guard';
 import { ListaEnviosComponent } from './pages/lista-envios/lista-envios.component';
+import { MisEnviosComponent } from './pages/mis-envios/mis-envios.component';
+import { MisCotizacionesComponent } from './pages/mis-cotizaciones/mis-cotizaciones.component';
 
 const routes: Routes = [
   {
@@ -39,9 +43,12 @@ const routes: Routes = [
       },
       { path: 'admin/vehiculo', component: CrudVehiculoComponent, pathMatch: 'full' },
       { path: 'admin/local', component: CrudLocalComponent, pathMatch: 'full' },
-      { path: 'admin/clientes', component: ListaUsuariosComponent, pathMatch: 'full' },
+      { path: 'admin/clientes', component: ListaClientesComponent, pathMatch: 'full' },
       { path: 'cotizacion', component: GenerarCotizacionComponent, pathMatch: 'full' },
-      { path: 'listEnvio', component: ListaEnviosComponent, pathMatch: 'full'},
+      { path: 'listEnvios', component: ListaEnviosComponent, pathMatch: 'full'},
+      { path: 'mis-envios', component: MisEnviosComponent, pathMatch: 'full'},
+      { path: 'lista-cotizaciones', component: ListaCotizacionesComponent, pathMatch: 'full'},
+      { path: 'mis-cotizaciones', component: MisCotizacionesComponent, pathMatch: 'full'},
       { path: '**', component: AdminHomeComponent },
     ],
     canLoad: [ValidarTokenGuard],
