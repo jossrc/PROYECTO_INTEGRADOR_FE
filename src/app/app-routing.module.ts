@@ -27,32 +27,46 @@ const routes: Routes = [
     path: '',
     component: AuthLayoutComponent,
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
-    // canLoad: [ValidarLoginGuard],
-    // canActivate: [ValidarLoginGuard],
   },
   {
-    path: '',
+    path: 'usuario',
     component: UsuarioLayoutComponent,
     children: [
-      { path: 'admin/home', component: AdminHomeComponent, pathMatch: 'full' },
-      { path: 'admin/empleados', component: CrudEmpleadoComponent, pathMatch: 'full' },
-      {
-        path: 'admin/categoria-paquete',
-        component: CrudCategoriaPaqueteComponent,
-        pathMatch: 'full'
-      },
-      { path: 'admin/vehiculo', component: CrudVehiculoComponent, pathMatch: 'full' },
-      { path: 'admin/local', component: CrudLocalComponent, pathMatch: 'full' },
-      { path: 'admin/clientes', component: ListaClientesComponent, pathMatch: 'full' },
+      { path: 'home', component: AdminHomeComponent, pathMatch: 'full' },
       { path: 'cotizacion', component: GenerarCotizacionComponent, pathMatch: 'full' },
-      { path: 'listEnvios', component: ListaEnviosComponent, pathMatch: 'full'},
-      { path: 'mis-envios', component: MisEnviosComponent, pathMatch: 'full'},
-      { path: 'lista-cotizaciones', component: ListaCotizacionesComponent, pathMatch: 'full'},
       { path: 'mis-cotizaciones', component: MisCotizacionesComponent, pathMatch: 'full'},
+      { path: 'mis-envios', component: MisEnviosComponent, pathMatch: 'full'},
       { path: '**', component: AdminHomeComponent },
     ],
     canLoad: [ValidarTokenGuard],
     canActivate: [ValidarTokenGuard],
+    data: {
+      role: 'ROLE_ALL'
+    }
+  },
+  {
+    path: 'admin',
+    component: UsuarioLayoutComponent,
+    children: [
+
+      { path: 'empleados', component: CrudEmpleadoComponent, pathMatch: 'full' },
+      {
+        path: 'categoria-paquete',
+        component: CrudCategoriaPaqueteComponent,
+        pathMatch: 'full'
+      },
+      { path: 'vehiculo', component: CrudVehiculoComponent, pathMatch: 'full' },
+      { path: 'local', component: CrudLocalComponent, pathMatch: 'full' },
+      { path: 'clientes', component: ListaClientesComponent, pathMatch: 'full' },
+      { path: 'listEnvios', component: ListaEnviosComponent, pathMatch: 'full'},
+      { path: 'lista-cotizaciones', component: ListaCotizacionesComponent, pathMatch: 'full'},
+      { path: '**', component: AdminHomeComponent },
+    ],
+    canLoad: [ValidarTokenGuard],
+    canActivate: [ValidarTokenGuard],
+    data: {
+      role: 'ROLE_ADMIN'
+    }
   },
 ];
 
