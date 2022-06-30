@@ -155,13 +155,7 @@ export class NavigationService {
           icon: 'pi pi-map-marker',
         }
       ],
-    },
-    {
-      name: 'Configuraciones',
-      state: '../admin/configuraciones',
-      type: 'link',
-      icon: 'pi pi-cog',
-    },
+    }
   ]
 
   menuAdministrador: IMenuItem[] = [
@@ -250,12 +244,6 @@ export class NavigationService {
           icon: 'pi pi-map-marker',
         }
       ],
-    },
-    {
-      name: 'Configuraciones',
-      state: '../admin/configuraciones',
-      type: 'link',
-      icon: 'pi pi-cog',
     },
   ];
   menuEmpleado: IMenuItem[] = [];
