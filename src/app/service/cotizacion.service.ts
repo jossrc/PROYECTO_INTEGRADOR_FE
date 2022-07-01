@@ -33,6 +33,16 @@ export class CotizacionService {
     return this.http.get(API_ROUTE + '/listar/todo', { headers: this.getHeaders() });
   }
 
+  listarCotizacionesPorDia(): Observable<any> {
+
+    return this.http.get(API_ROUTE + '/listarPorDia', { headers: this.getHeaders() });
+  }
+
+  listarCotizacionesPorUsuarioDia(): Observable<any> {
+
+    return this.http.get(API_ROUTE + '/listarPorIdDia', { headers: this.getHeaders() });
+  }
+
   registrarCotizacion(datosCotizacion: any): Observable<any> {
     return this.http.post(API_ROUTE + '/registrar', datosCotizacion, { headers: this.getHeaders() });
   }

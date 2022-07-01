@@ -29,4 +29,9 @@ export class UsuarioService {
   registrarCliente(cliente: any): Observable<any> {
     return this.http.post(API_ROUTE + '/registrar', cliente);
   }
+
+  perfilUsuario(): Observable<any> {
+    return this.http.get(environment.API_ENDPOINT +'/usuarios/mostrarPerfil', { headers: this.getHeaders() });
+  }
+
 }
