@@ -35,6 +35,18 @@ export class EnviosService {
     });
   }
 
+  consultarPorDia(): Observable<Envio[]> {
+    return this.http.get<Envio[]>(baseURL + '/listaEnviosPorDia', {
+      headers: this.getHeaders(),
+    });
+  }
+
+  consultarPorUsuarioDia(): Observable<Envio[]> {
+    return this.http.get<Envio[]>(baseURL + '/listaEnviosPorUsuarioDia', {
+      headers: this.getHeaders(),
+    });
+  }
+
   generarEnvio(envio: any): Observable<any> {
     return this.http.post(baseURL + '/registrar', envio, {
       headers: this.getHeaders(),
