@@ -1,0 +1,45 @@
+<div class="container">
+
+    <h1 style="text-align: center; font: 150% sans-serif;">Listado de envios</h1>
+        
+
+<div>
+<button style="border-radius: 30px; margin-bottom: 50px; margin-left: 80%;" pButton (click)=" cargaEnvio()" type="button" label="Listar" ></button>
+</div>
+
+<div class="row">
+    <p-table [value]="envios" responsiveLayout="scroll">
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 10%">Codigo</th>
+                <th style="width: 10%">Nombre Usuario</th>
+                <th style="width: 10%">Apellido Usuario</th>
+                <th style="width: 10%">Vehiculo</th>
+                <th style="width: 10%">Fecha Inicio</th>
+                <th style="width: 10%">Fecha Entrega</th>
+                <th style="width: 10%">Estado</th>
+            </tr>
+        </ng-template>
+        
+        <ng-template pTemplate="body" let-aux>
+            
+            <tr>
+                <td>{{aux.idEnvio}}</td>
+                <td>{{aux.usuario!.nombre}}</td>
+                <td>{{aux.usuario!.apellido}}</td>
+                <td>{{aux.vehiculo!.placa}}</td>
+                <td>{{aux.fechaInicio | date:'dd/MM/yyyy'}}</td>
+                <td>{{aux.fechaEntrega | date:'dd/MM/yyyy'}}</td>
+                <td>
+                    <p-tag *ngIf="aux.estado == 0" styleClass="mr-2" severity="danger" value="Rechazado"></p-tag>
+                    <p-tag *ngIf="aux.estado == 1" styleClass="mr-2" severity="info" value="Enviando"></p-tag>
+                    <p-tag *ngIf="aux.estado == 2" styleClass="mr-2" severity="success" value="Concluido"></p-tag>
+                </td>
+            </tr>
+            
+        </ng-template>
+</p-table>
+</div>
+
+</div>

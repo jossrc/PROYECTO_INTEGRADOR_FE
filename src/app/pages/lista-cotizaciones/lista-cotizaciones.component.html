@@ -1,0 +1,57 @@
+<p-toast></p-toast>
+<div class="p-5">
+  <div class="col-12">
+    <div class="surface-card shadow-2 border-round p-4">
+      <div class="card">
+        <p-message></p-message>
+
+        <p-table [value]="listaCotizaciones" [rows]="10" [paginator]="true"  responsiveLayout="scroll"
+                  [rowHover]="true" dataKey="id"
+                 currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} registros" [showCurrentPageReport]="true">
+          <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+              <h5 class="m-0">Listado de Cotizaciones</h5>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="idCotizacion">ID <p-sortIcon field="idCotizacion"></p-sortIcon></th>
+              <th pSortableColumn="idUsuario">ID Usuario<p-sortIcon field="idUsuario"></p-sortIcon></th>
+              <th pSortableColumn="costo">Costo <p-sortIcon field="costo"></p-sortIcon></th>
+              <th pSortableColumn="fechaCreacion">Fecha <p-sortIcon field="fechaCreacion"></p-sortIcon></th>
+              <th pSortableColumn="ubigeo.departamento">Departamento<p-sortIcon field="ubigeo.departamento"></p-sortIcon></th>
+              <th pSortableColumn="paquete.pesototal">Peso <p-sortIcon field="paquete.pesototal"></p-sortIcon></th>
+              <th pSortableColumn="paquete.cantidad">Estado <p-sortIcon field="paquete.cantidad"></p-sortIcon></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-cotizaciones>
+            <tr>
+              <td>{{cotizaciones?.idCotizacion}}</td>
+              <td>{{cotizaciones?.idUsuario}}</td>
+              <td>{{cotizaciones?.costo}}</td>
+              <td>{{cotizaciones?.fechaCreacion | date:'dd/MM/yyyy'}}</td>
+              <td>{{cotizaciones?.ubigeo.departamento}}</td>
+              <td>{{cotizaciones?.paquete.pesototal}}</td>
+              <td>
+                <p-tag *ngIf="cotizaciones.estado == 0" styleClass="mr-2" severity="info" value="Cotizado"></p-tag>
+                <p-tag *ngIf="cotizaciones.estado == 1" styleClass="mr-2" severity="warning" value="Pendiente"></p-tag>
+                <p-tag *ngIf="cotizaciones.estado == 2" styleClass="mr-2" severity="success" value="Aprobado"></p-tag>
+                <p-tag *ngIf="cotizaciones.estado == 3" styleClass="mr-2" severity="danger" value="Rechazado"></p-tag>
+              </td>
+              <td><button *ngIf="cotizaciones.estado == 1" pButton pRipple (click)="abrirModal(cotizaciones)" type="button" label="Generar" class="p-button-raised p-button-success p-button-sm"></button></td>
+              <td><button *ngIf="cotizaciones.estado == 1"pButton pRipple (click)="rechazarCotizacion(cotizaciones?.idCotizacion)" icon="pi pi-trash" class="p-button-rounded p-button-warning"></button></td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between" style="font-size: .8rem">
+              Hay un total de {{listaCotizaciones ? listaCotizaciones.length : 0 }} registros.
+            </div>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>
+

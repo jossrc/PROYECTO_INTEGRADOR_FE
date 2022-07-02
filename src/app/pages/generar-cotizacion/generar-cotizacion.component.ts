@@ -8,6 +8,9 @@ import { tap } from "rxjs";
 import { Ubigeo } from "../../models/Ubigeo";
 import { MessageService } from "primeng/api";
 import {CotizacionService} from "../../service/cotizacion.service";
+import { CategoriaPaquete } from 'src/app/models/CategoriaPaquete';
+import { CategoriaPaqueteService } from 'src/app/service/categoria-paquete.service';
+import Swal from 'sweetalert2';
 
 interface Departamento {
   name: string,
@@ -24,6 +27,12 @@ interface Distrito {
   code: number // ubigeoId
 }
 
+interface Categoria {
+  name: string,
+  code: number
+}
+
+
 @Component({
   selector: 'app-generar-cotizacion',
   templateUrl: './generar-cotizacion.component.html',
@@ -34,6 +43,7 @@ export class GenerarCotizacionComponent implements OnInit {
   listaDepartamentos : Departamento[] = [];
   listaProvincias: Provincia[] = [];
   listaDistritos: Distrito[] = [];
+  listaCategorias: Categoria[] = [];
 
   productos: string[] = []
 
@@ -44,6 +54,7 @@ export class GenerarCotizacionComponent implements OnInit {
     distrito: ['', [Validators.required]], // Ubigeo
     productos: [ '', [Validators.required]  ],
     cantidad: [ '', [Validators.required] ],
+    categoria: ['', [Validators.required]],
     pesoTotal: [ '', [Validators.required] ],
     descripcion: [ '', [Validators.required]  ]
   })
@@ -52,12 +63,14 @@ export class GenerarCotizacionComponent implements OnInit {
                private ubigeoService: UbigeoService,
                private localService: LocalService,
                private rolService: RolService,
+               private categoriaService: CategoriaPaqueteService,
                private formBuilder: FormBuilder,
                public messageService: MessageService,
                private cotizacionService: CotizacionService
             ) {
 
     this.listarDepartamentos();
+    this.listarCategoria()
   }
 
   ngOnInit(): void {
@@ -84,6 +97,18 @@ export class GenerarCotizacionComponent implements OnInit {
       }
     });
 
+  }
+
+  listarCategoria(){
+    this.categoriaService.listarCategoriaPaquete().subscribe((obj: any) =>{
+      const data = obj.datos.map((categoria:CategoriaPaquete) : Categoria =>{
+        return{
+          name: categoria.nombre!,
+          code: categoria.idCategoria!
+        }
+      });
+      this.listaCategorias = data;
+    })
   }
 
   listarDepartamentos() {
@@ -147,12 +172,12 @@ export class GenerarCotizacionComponent implements OnInit {
       ubigeo: {
         idUbigeo: data.distrito.code
       },
-      paquete: {
-        productos: JSON.stringify(data.productos),
-        cantidad: data.cantidad,
-        pesoTotal: data.pesoTotal
-      }
-    }
+      productos: data.productos,
+      cantidad: data.cantidad,
+      pesoTotal: data.pesoTotal,
+      idCategoria: data.categoria.code
+    };
+    console.log(cotizacion);
 
     // TODO: Agregar categoria paquete al html, al formCotizacion, y al objeto cotizacion en paquete
     // TODO: Crear el servicio y mandarlo, luego en el back crear una clase que siga la misma estructura de cotizacion, pero el de arriba
@@ -160,7 +185,17 @@ export class GenerarCotizacionComponent implements OnInit {
     // Se le retornará su cotizacion
     // se debe agregar la anotacion @transactional eso indica que es transaccion nada mas
 
-    console.log(this.formCotizacion.value);
+    /*console.log(this.formCotizacion.value);*/
+    this.cotizacionService.registrarCotizacion(cotizacion).subscribe((response: any)=>{
+      Swal.fire("Registrado", "Felicitaciones, se registró correctamente, en breves será comunicado.", 'success')
+      console.log(response)
+    },
+    (error:any)=>{
+      Swal.fire("Error", "Error, no se generó la cotización.", 'error')
+      console.log(error)
+    });
+
+
 
   }
 
