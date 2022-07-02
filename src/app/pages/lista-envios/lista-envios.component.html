@@ -13,13 +13,14 @@
 
     <ng-template pTemplate="header">
         <tr>
-            <th style="width: 10%">Codigo</th>
-            <th style="width: 10%">Nombre Usuario</th>
-            <th style="width: 10%">Apellido Usuario</th>
-            <th style="width: 10%">Vehiculo</th>
-            <th style="width: 10%">Fecha Inicio</th>
-            <th style="width: 10%">Fecha Entrega</th>
-            <th style="width: 10%">Estado</th>
+            <th>Codigo</th>
+            <th>Nombre Usuario</th>
+            <th>Apellido Usuario</th>
+            <th>Vehiculo</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Entrega</th>
+            <th>Estado</th>
+            <th></th>
         </tr>
     </ng-template>
     
@@ -37,6 +38,7 @@
                 <p-tag *ngIf="aux.estado == 1" styleClass="mr-2" severity="info" value="Enviando"></p-tag>
                 <p-tag *ngIf="aux.estado == 2" styleClass="mr-2" severity="success" value="Concluido"></p-tag>
             </td>
+            <td><button *ngIf="aux.estado == 1"pButton pRipple (click)="finalizarEnvio(aux?.idEnvio)" type="button" label="Finalizar " class="p-button-raised p-button-success p-button-sm"></button></td>
         </tr>
         
     </ng-template>
