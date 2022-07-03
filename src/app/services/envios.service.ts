@@ -52,4 +52,8 @@ export class EnviosService {
       headers: this.getHeaders(),
     });
   }
+
+  finalizarEnvio(idEnvio: number) {
+    return this.http.put(baseURL + '/finalizar-envio/' + idEnvio, null, { headers: this.getHeaders() });
+  }
 }
