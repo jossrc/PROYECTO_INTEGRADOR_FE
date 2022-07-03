@@ -4,6 +4,7 @@ import { Envio } from 'src/app/models/Envio';
 import { Usuario } from 'src/app/models/Usuario';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { EnviosService } from 'src/app/services/envios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-lista-envios',
@@ -75,6 +76,32 @@ export class ListaEnviosComponent implements OnInit {
     this.envioService.consultar().subscribe(
       response => this.envios = response
     );
+  }
+
+  finalizarEnvio(idEnvio: number) {
+    console.log(idEnvio)
+    Swal.fire({
+      title: 'Finalizar envio',
+      text: "¿Estás seguro de finalizar el envio?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, finalizar',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.envioService.finalizarEnvio(idEnvio).subscribe( (data) => {
+          this.consultar()
+          Swal.fire(
+            'Envio finalizado!',
+            'El envio ha sido finalizado correctamente',
+            'success'
+          )
+        })
+
+      }
+    })
   }
 
 }
